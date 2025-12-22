@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900">
+  <defs>
+    <pattern id="wood" patternUnits="userSpaceOnUse" width="100" height="10">
+      <rect width="100" height="10" fill="#DEB887"/>
+      <path d="M0,2 Q25,0 50,2 T100,2" stroke="#C4A574" stroke-width="0.5" fill="none"/>
+    </pattern>
+    <radialGradient id="plasma" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:#ff00ff;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#8000ff;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#4000ff;stop-opacity:0.3"/>
+    </radialGradient>
+  </defs>
+  
+  <rect width="600" height="900" fill="#000"/>
+  
+  <text x="300" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#ff00ff">08 — ALIEN CRAFT</text>
+  <text x="300" y="75" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#aaa">Extraterrestrial / UFO inspired</text>
+  
+  <!-- Main body with organic shape -->
+  <ellipse cx="300" cy="460" rx="125" ry="215" fill="#1a0033" stroke="#8000ff" stroke-width="3"/>
+  
+  <!-- Bioluminescent panels -->
+  <ellipse cx="260" cy="350" rx="40" ry="60" fill="url(#plasma)" opacity="0.6"/>
+  <ellipse cx="340" cy="350" rx="40" ry="60" fill="url(#plasma)" opacity="0.6"/>
+  <ellipse cx="300" cy="460" rx="50" ry="70" fill="url(#plasma)" opacity="0.7"/>
+  <ellipse cx="260" cy="570" rx="35" ry="50" fill="url(#plasma)" opacity="0.5"/>
+  <ellipse cx="340" cy="570" rx="35" ry="50" fill="url(#plasma)" opacity="0.5"/>
+  
+  <!-- Alien symbols/glyphs -->
+  <text x="300" y="380" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" fill="#ff00ff" opacity="0.7">◊◊◊</text>
+  <text x="300" y="500" font-family="Arial, sans-serif" font-size="28" text-anchor="middle" fill="#ff00ff" opacity="0.7">⟡⟡⟡</text>
+  
+  <!-- Organic curved fins -->
+  <path d="M175,580 Q150,630 165,690 L185,650 Z" fill="#1a0033" stroke="#ff00ff" stroke-width="3"/>
+  <path d="M425,580 Q450,630 435,690 L415,650 Z" fill="#1a0033" stroke="#ff00ff" stroke-width="3"/>
+  
+  <!-- Energy lines -->
+  <line x1="300" y1="280" x2="300" y2="650" stroke="#8000ff" stroke-width="2" opacity="0.5"/>
+  <line x1="220" y1="340" x2="380" y2="580" stroke="#ff00ff" stroke-width="1" opacity="0.4"/>
+  <line x1="380" y1="340" x2="220" y2="580" stroke="#ff00ff" stroke-width="1" opacity="0.4"/>
+  
+  <!-- Plasma exhaust -->
+  <ellipse cx="300" cy="690" rx="45" ry="65" fill="#ff00ff" opacity="0.7"/>
+  <ellipse cx="300" cy="710" rx="38" ry="55" fill="#8000ff" opacity="0.6"/>
+  <ellipse cx="300" cy="730" rx="28" ry="40" fill="#4000ff" opacity="0.5"/>
+  
+  <text x="300" y="830" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff00ff">• Bioluminescent panels</text>
+  <text x="300" y="850" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff00ff">• Alien glyphs/symbols</text>
+  <text x="300" y="870" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ff00ff">• Organic curves</text>
+</svg>

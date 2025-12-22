@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900">
+  <defs>
+    <pattern id="wood" patternUnits="userSpaceOnUse" width="100" height="10">
+      <rect width="100" height="10" fill="#DEB887"/>
+      <path d="M0,2 Q25,0 50,2 T100,2" stroke="#C4A574" stroke-width="0.5" fill="none"/>
+    </pattern>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#B8860B"/>
+      <stop offset="50%" style="stop-color:#FFD700"/>
+      <stop offset="100%" style="stop-color:#B8860B"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="900" fill="#1a1a2e"/>
+  
+  <text x="300" y="50" font-family="Palatino, serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#FFD700">07 — ROYAL CRUISER</text>
+  <text x="300" y="75" font-family="Palatino, serif" font-size="13" text-anchor="middle" fill="#aaa">Luxury / VIP aesthetic</text>
+  
+  <!-- Main body -->
+  <ellipse cx="300" cy="460" rx="120" ry="210" fill="url(#wood)" stroke="#654321" stroke-width="4"/>
+  
+  <!-- Gold trim bands -->
+  <rect x="180" y="300" width="240" height="8" fill="url(#gold)" rx="4"/>
+  <rect x="180" y="390" width="240" height="8" fill="url(#gold)" rx="4"/>
+  <rect x="180" y="480" width="240" height="8" fill="url(#gold)" rx="4"/>
+  <rect x="180" y="570" width="240" height="8" fill="url(#gold)" rx="4"/>
+  <rect x="180" y="640" width="240" height="8" fill="url(#gold)" rx="4"/>
+  
+  <!-- Ornate emblem/crest -->
+  <circle cx="300" cy="420" r="45" fill="url(#gold)" stroke="#B8860B" stroke-width="3"/>
+  <circle cx="300" cy="420" r="38" fill="#8B0000"/>
+  <text x="300" y="440" font-family="Palatino, serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#FFD700">R</text>
+  
+  <!-- Decorative scroll fins -->
+  <path d="M185,590 Q170,620 160,650 Q155,670 165,690 L185,670 Z" fill="url(#gold)" stroke="#B8860B" stroke-width="2"/>
+  <path d="M415,590 Q430,620 440,650 Q445,670 435,690 L415,670 Z" fill="url(#gold)" stroke="#B8860B" stroke-width="2"/>
+  
+  <!-- Tufted leather texture suggestion -->
+  <circle cx="260" cy="520" r="8" fill="#8B0000" opacity="0.3"/>
+  <circle cx="340" cy="520" r="8" fill="#8B0000" opacity="0.3"/>
+  <circle cx="260" cy="560" r="8" fill="#8B0000" opacity="0.3"/>
+  <circle cx="340" cy="560" r="8" fill="#8B0000" opacity="0.3"/>
+  
+  <!-- Golden exhaust -->
+  <ellipse cx="300" cy="690" rx="35" ry="55" fill="#FFD700" opacity="0.6"/>
+  <ellipse cx="300" cy="710" rx="28" ry="45" fill="#FFA500" opacity="0.5"/>
+  
+  <text x="300" y="830" font-family="Palatino, serif" font-size="12" text-anchor="middle" fill="#FFD700">• Gold trim & accents</text>
+  <text x="300" y="850" font-family="Palatino, serif" font-size="12" text-anchor="middle" fill="#FFD700">• Emblem/crest centerpiece</text>
+  <text x="300" y="870" font-family="Palatino, serif" font-size="12" text-anchor="middle" fill="#FFD700">• Luxury finish</text>
+</svg>

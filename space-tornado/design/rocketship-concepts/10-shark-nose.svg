@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900">
+  <defs>
+    <pattern id="wood" patternUnits="userSpaceOnUse" width="100" height="10">
+      <rect width="100" height="10" fill="#DEB887"/>
+      <path d="M0,2 Q25,0 50,2 T100,2" stroke="#C4A574" stroke-width="0.5" fill="none"/>
+    </pattern>
+    <pattern id="shark" patternUnits="userSpaceOnUse" width="50" height="20">
+      <rect width="50" height="20" fill="#5a7a8f"/>
+      <path d="M0,10 L10,0 L20,10 L30,0 L40,10 L50,0" fill="none" stroke="#3a5a6f" stroke-width="2"/>
+    </pattern>
+  </defs>
+  
+  <rect width="600" height="900" fill="#87CEEB"/>
+  
+  <text x="300" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#003366">10 — SHARK NOSE</text>
+  <text x="300" y="75" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#555">WWII fighter plane / nose art</text>
+  
+  <!-- Main body -->
+  <ellipse cx="300" cy="460" rx="120" ry="210" fill="url(#shark)" stroke="#3a5a6f" stroke-width="3"/>
+  
+  <!-- Shark teeth on nose -->
+  <path d="M220,280 L230,310 L240,280 L250,310 L260,280 L270,310 L280,280 L290,310 L300,280 L310,310 L320,280 L330,310 L340,280 L350,310 L360,280 L370,310 L380,280 L380,250 L220,250 Z" fill="#fff" stroke="#000" stroke-width="2"/>
+  
+  <!-- Evil eye -->
+  <ellipse cx="260" cy="320" rx="30" ry="35" fill="#fff" stroke="#000" stroke-width="3"/>
+  <circle cx="265" cy="325" r="15" fill="#8B0000"/>
+  <circle cx="268" cy="322" r="8" fill="#000"/>
+  <ellipse cx="340" cy="320" rx="30" ry="35" fill="#fff" stroke="#000" stroke-width="3"/>
+  <circle cx="335" cy="325" r="15" fill="#8B0000"/>
+  <circle cx="332" cy="322" r="8" fill="#000"/>
+  
+  <!-- Nose art style text -->
+  <text x="300" y="520" font-family="Brush Script MT, cursive" font-size="42" font-weight="bold" text-anchor="middle" fill="#DC143C" stroke="#000" stroke-width="1">"Bite Force"</text>
+  
+  <!-- Star insignia -->
+  <circle cx="300" cy="430" r="35" fill="#fff" stroke="#003366" stroke-width="3"/>
+  <text x="300" y="445" font-family="Arial, sans-serif" font-size="48" font-weight="bold" text-anchor="middle" fill="#003366">★</text>
+  
+  <!-- Aggressive fins -->
+  <path d="M180,600 L145,720 L180,670 Z" fill="#3a5a6f" stroke="#1a3a4f" stroke-width="3"/>
+  <path d="M420,600 L455,720 L420,670 Z" fill="#3a5a6f" stroke="#1a3a4f" stroke-width="3"/>
+  
+  <!-- Exhaust -->
+  <ellipse cx="300" cy="690" rx="35" ry="55" fill="#ff8c00" opacity="0.7"/>
+  
+  <text x="300" y="830" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#003366">• Shark teeth nose art</text>
+  <text x="300" y="850" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#003366">• Aggressive eyes</text>
+  <text x="300" y="870" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#003366">• Military star insignia</text>
+</svg>

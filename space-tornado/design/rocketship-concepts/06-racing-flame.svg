@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900">
+  <defs>
+    <pattern id="wood" patternUnits="userSpaceOnUse" width="100" height="10">
+      <rect width="100" height="10" fill="#DEB887"/>
+      <path d="M0,2 Q25,0 50,2 T100,2" stroke="#C4A574" stroke-width="0.5" fill="none"/>
+    </pattern>
+    <linearGradient id="orange" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#cc4400"/>
+      <stop offset="50%" style="stop-color:#ff6600"/>
+      <stop offset="100%" style="stop-color:#cc4400"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="900" fill="#000"/>
+  
+  <text x="300" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#fff">06 — RACING FLAME</text>
+  <text x="300" y="75" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#aaa">Hot rod / speed racer theme</text>
+  
+  <!-- Main body -->
+  <ellipse cx="300" cy="460" rx="118" ry="210" fill="#111" stroke="#333" stroke-width="3"/>
+  
+  <!-- Flame pattern decals -->
+  <path d="M185,320 Q200,300 220,310 Q240,320 250,300 Q260,280 280,290 L280,380 Q260,360 240,370 Q220,380 200,360 Q180,340 185,320 Z" fill="url(#orange)" opacity="0.9"/>
+  <path d="M415,320 Q400,300 380,310 Q360,320 350,300 Q340,280 320,290 L320,380 Q340,360 360,370 Q380,380 400,360 Q420,340 415,320 Z" fill="url(#orange)" opacity="0.9"/>
+  
+  <!-- Racing number -->
+  <text x="300" y="480" font-family="Impact, sans-serif" font-size="120" font-weight="bold" text-anchor="middle" fill="#ff6600" stroke="#fff" stroke-width="3">88</text>
+  
+  <!-- Racing stripe -->
+  <rect x="285" y="300" width="30" height="380" fill="#fff" opacity="0.9"/>
+  <rect x="290" y="305" width="20" height="370" fill="#000"/>
+  
+  <!-- Checkered flag pattern -->
+  <rect x="240" y="620" width="20" height="20" fill="#fff"/>
+  <rect x="260" y="620" width="20" height="20" fill="#000"/>
+  <rect x="280" y="620" width="20" height="20" fill="#fff"/>
+  <rect x="260" y="640" width="20" height="20" fill="#fff"/>
+  <rect x="240" y="640" width="20" height="20" fill="#000"/>
+  <rect x="320" y="620" width="20" height="20" fill="#fff"/>
+  <rect x="340" y="620" width="20" height="20" fill="#000"/>
+  <rect x="360" y="620" width="20" height="20" fill="#fff"/>
+  <rect x="340" y="640" width="20" height="20" fill="#fff"/>
+  <rect x="320" y="640" width="20" height="20" fill="#000"/>
+  
+  <!-- Small spoiler fins -->
+  <path d="M190,620 L170,680 L190,660 Z" fill="#ff6600" stroke="#cc4400" stroke-width="2"/>
+  <path d="M410,620 L430,680 L410,660 Z" fill="#ff6600" stroke="#cc4400" stroke-width="2"/>
+  
+  <!-- Exhaust -->
+  <ellipse cx="300" cy="690" rx="40" ry="60" fill="#ffcc00" opacity="0.8"/>
+  <ellipse cx="300" cy="710" rx="32" ry="50" fill="#ff6600" opacity="0.7"/>
+  
+  <text x="300" y="830" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ccc">• Flame decals</text>
+  <text x="300" y="850" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ccc">• Racing number</text>
+  <text x="300" y="870" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#ccc">• Checkered flag details</text>
+</svg>

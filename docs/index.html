@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>🚀 Space Tornado Control</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        :root {
+            --bg-primary: #1a1a2e;
+            --bg-secondary: #16213e;
+            --bg-card: #0f3460;
+            --accent: #e94560;
+            --accent-glow: rgba(233, 69, 96, 0.5);
+            --success: #00d9ff;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --warning: #ffc107;
+            --fire-color: #ff6b00;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 120px;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            text-shadow: 0 0 20px var(--accent-glow);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--bg-card);
+            font-size: 0.9rem;
+            margin-top: 10px;
+        }
+
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--text-secondary);
+        }
+
+        .status-dot.connected {
+            background: var(--success);
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.connecting {
+            background: var(--warning);
+            animation: pulse 0.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-title {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        /* Connection Mode Toggle */
+        .connection-mode {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 4px;
+            margin-bottom: 15px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            padding: 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .mode-btn.active {
+            background: var(--success);
+            color: var(--bg-primary);
+        }
+
+        /* Host Input */
+        .host-input-container {
+            margin-bottom: 15px;
+        }
+
+        .host-input {
+            width: 100%;
+            padding: 12px 15px;
+            font-size: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--text-primary);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .host-input:focus {
+            border-color: var(--success);
+        }
+
+        .host-input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        /* Connection Button */
+        .connect-btn {
+            width: 100%;
+            padding: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--success), #0099cc);
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .connect-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 217, 255, 0.4);
+        }
+
+        .connect-btn.connected {
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .connect-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Output Status Grid */
+        .output-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .output-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .output-item.active {
+            background: rgba(0, 217, 255, 0.2);
+            border: 1px solid var(--success);
+        }
+
+        .output-item.firing {
+            background: rgba(255, 107, 0, 0.3);
+            border: 2px solid var(--fire-color);
+            animation: fire-glow 0.5s infinite alternate;
+        }
+
+        @keyframes fire-glow {
+            from { box-shadow: 0 0 10px var(--fire-color); }
+            to { box-shadow: 0 0 25px var(--fire-color); }
+        }
+
+        .output-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--success);
+        }
+
+        .output-item.firing .output-value {
+            color: var(--fire-color);
+        }
+
+        .output-label {
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* Velocity Display */
+        .velocity-display {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .velocity-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--success);
+            font-family: 'Monaco', 'Menlo', monospace;
+        }
+
+        .velocity-unit {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-left: 5px;
+        }
+
+        .velocity-direction {
+            font-size: 1.2rem;
+            margin-top: 5px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .velocity-direction.forward {
+            background: rgba(0, 217, 255, 0.2);
+            color: var(--success);
+        }
+
+        .velocity-direction.reverse {
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent);
+        }
+
+        /* Speed Control */
+        .speed-display {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .speed-value {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--success);
+            line-height: 1;
+        }
+
+        .speed-unit {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+        }
+
+        .speed-slider {
+            width: 100%;
+            height: 60px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: linear-gradient(to right, #0f3460 0%, var(--success) 100%);
+            border-radius: 30px;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .speed-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            cursor: grab;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .speed-slider::-moz-range-thumb {
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            cursor: grab;
+            border: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .speed-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .speed-btn {
+            flex: 1;
+            padding: 15px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .speed-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .speed-btn:active {
+            transform: scale(0.95);
+        }
+
+        /* Direction Toggle */
+        .direction-toggle {
+            display: flex;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 4px;
+        }
+
+        .direction-btn {
+            flex: 1;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 10px;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .direction-btn.active {
+            background: var(--success);
+            color: var(--bg-primary);
+        }
+
+        .direction-btn.active.reverse {
+            background: var(--accent);
+        }
+
+        /* Fire Button */
+        .fire-container {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, var(--bg-primary), transparent);
+        }
+
+        .fire-btn {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            display: block;
+            padding: 25px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: none;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--accent), #ff6b6b);
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 6px 30px var(--accent-glow);
+        }
+
+        .fire-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 40px var(--accent-glow);
+        }
+
+        .fire-btn:active, .fire-btn.firing {
+            transform: translateY(0);
+            background: linear-gradient(135deg, var(--fire-color), #ffc107);
+            animation: fire-pulse 0.2s infinite;
+        }
+
+        @keyframes fire-pulse {
+            0%, 100% { box-shadow: 0 6px 30px var(--accent-glow); }
+            50% { box-shadow: 0 6px 50px rgba(255, 193, 7, 0.8); }
+        }
+
+        .fire-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+            animation: none;
+        }
+
+        /* Emergency Stop */
+        .emergency-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            background: transparent;
+            color: var(--accent);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .emergency-btn:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        /* Log */
+        .log-container {
+            max-height: 150px;
+            overflow-y: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+        }
+
+        .log-entry {
+            padding: 3px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-secondary);
+        }
+
+        .log-entry.error { color: var(--accent); }
+        .log-entry.success { color: var(--success); }
+        .log-entry.fire { color: var(--fire-color); }
+
+        /* Hidden by default */
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Space Tornado</h1>
+            <div class="status-badge">
+                <span class="status-dot" id="statusDot"></span>
+                <span id="statusText">Disconnected</span>
+            </div>
+        </header>
+
+        <!-- Connection Card -->
+        <div class="card" id="connectionCard">
+            <div class="card-title">Connection Mode</div>
+            <div class="connection-mode">
+                <button class="mode-btn active" id="wifiModeBtn" onclick="setConnectionMode('wifi')">
+                    📶 WiFi/HTTP
+                </button>
+                <button class="mode-btn" id="bleModeBtn" onclick="setConnectionMode('ble')">
+                    📡 Bluetooth
+                </button>
+            </div>
+            
+            <div id="wifiConfig">
+                <div class="host-input-container">
+                    <input type="text" class="host-input" id="hostInput" 
+                           placeholder="spacetornado.local or IP address"
+                           value="spacetornado.local">
+                </div>
+            </div>
+            
+            <button class="connect-btn" id="connectBtn" onclick="toggleConnection()">
+                <span id="connectIcon">📡</span>
+                <span id="connectText">Connect</span>
+            </button>
+        </div>
+
+        <!-- Current Outputs Card -->
+        <div class="card hidden" id="outputCard">
+            <div class="card-title">Current Outputs</div>
+            
+            <div class="velocity-display">
+                <span class="velocity-value" id="velocityValue">0.00</span>
+                <span class="velocity-unit">units</span>
+                <div class="velocity-direction forward" id="velocityDirection">⬆️ FORWARD</div>
+            </div>
+            
+            <div class="output-grid">
+                <div class="output-item" id="firingOutput">
+                    <div class="output-value" id="firingValue">OFF</div>
+                    <div class="output-label">🔥 Thrusters</div>
+                </div>
+                <div class="output-item" id="enabledOutput">
+                    <div class="output-value" id="enabledValue">OFF</div>
+                    <div class="output-label">⚡ System</div>
+                </div>
+                <div class="output-item">
+                    <div class="output-value" id="currentSpeedValue">0%</div>
+                    <div class="output-label">📊 Current Speed</div>
+                </div>
+                <div class="output-item">
+                    <div class="output-value" id="targetSpeedValue">0%</div>
+                    <div class="output-label">🎯 Target Speed</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Speed Control Card -->
+        <div class="card hidden" id="speedCard">
+            <div class="card-title">Speed Control</div>
+            <div class="speed-display">
+                <span class="speed-value" id="speedDisplay">0</span>
+                <span class="speed-unit">%</span>
+            </div>
+            <input type="range" class="speed-slider" id="speedSlider" 
+                   min="0" max="100" value="0" 
+                   oninput="updateSpeedDisplay(this.value)"
+                   onchange="sendSpeed(this.value)">
+            <div class="speed-buttons">
+                <button class="speed-btn" onclick="adjustSpeed(-10)">−10</button>
+                <button class="speed-btn" onclick="sendSpeed(0)">⏹️</button>
+                <button class="speed-btn" onclick="adjustSpeed(10)">+10</button>
+            </div>
+        </div>
+
+        <!-- Direction Control Card -->
+        <div class="card hidden" id="directionCard">
+            <div class="card-title">Direction</div>
+            <div class="direction-toggle">
+                <button class="direction-btn active" id="fwdBtn" onclick="setDirection(true)">
+                    ⬆️ Forward
+                </button>
+                <button class="direction-btn" id="revBtn" onclick="setDirection(false)">
+                    ⬇️ Reverse
+                </button>
+            </div>
+            <button class="emergency-btn" onclick="emergencyStop()">
+                🛑 Emergency Stop
+            </button>
+        </div>
+
+        <!-- Log Card -->
+        <div class="card hidden" id="logCard">
+            <div class="card-title">Activity Log</div>
+            <div class="log-container" id="logContainer"></div>
+        </div>
+    </div>
+
+    <!-- Fire Button (Fixed) -->
+    <div class="fire-container hidden" id="fireContainer">
+        <button class="fire-btn" id="fireBtn" 
+                onmousedown="startFiring()" onmouseup="stopFiring()"
+                ontouchstart="startFiring()" ontouchend="stopFiring()">
+            🔥 Fire Thrusters
+        </button>
+    </div>
+
+    <script>
+        // ============================================
+        // Configuration
+        // ============================================
+        const BLE_SERVICE_UUID = '4fafc201-1fb5-459e-8fcc-c5c9c331914b';
+        const BLE_COMMAND_CHAR_UUID = 'beb5483e-36e1-4688-b7f5-ea07361b26a8';
+        const BLE_STATUS_CHAR_UUID = 'beb5483f-36e1-4688-b7f5-ea07361b26a9';
+        const DEFAULT_HOST = 'spacetornado.local';
+        const POLL_INTERVAL_MS = 500;
+
+        // ============================================
+        // State
+        // ============================================
+        let connectionMode = 'wifi'; // 'wifi' or 'ble'
+        let isConnected = false;
+        let pollTimer = null;
+
+        // BLE state
+        let bleDevice = null;
+        let bleServer = null;
+        let bleService = null;
+        let commandChar = null;
+        let statusChar = null;
+
+        // WiFi state
+        let httpBaseUrl = '';
+
+        // ============================================
+        // UI Elements
+        // ============================================
+        const statusDot = document.getElementById('statusDot');
+        const statusText = document.getElementById('statusText');
+        const connectBtn = document.getElementById('connectBtn');
+        const connectIcon = document.getElementById('connectIcon');
+        const connectText = document.getElementById('connectText');
+        const wifiModeBtn = document.getElementById('wifiModeBtn');
+        const bleModeBtn = document.getElementById('bleModeBtn');
+        const wifiConfig = document.getElementById('wifiConfig');
+        const hostInput = document.getElementById('hostInput');
+        const outputCard = document.getElementById('outputCard');
+        const speedCard = document.getElementById('speedCard');
+        const directionCard = document.getElementById('directionCard');
+        const logCard = document.getElementById('logCard');
+        const fireContainer = document.getElementById('fireContainer');
+        const fireBtn = document.getElementById('fireBtn');
+        const speedSlider = document.getElementById('speedSlider');
+        const speedDisplay = document.getElementById('speedDisplay');
+
+        // ============================================
+        // Logging
+        // ============================================
+        function log(message, type = 'info') {
+            const container = document.getElementById('logContainer');
+            const entry = document.createElement('div');
+            entry.className = `log-entry ${type}`;
+            entry.textContent = `${new Date().toLocaleTimeString()} - ${message}`;
+            container.insertBefore(entry, container.firstChild);
+            
+            // Keep only last 50 entries
+            while (container.children.length > 50) {
+                container.removeChild(container.lastChild);
+            }
+            
+            console.log(`[${type}] ${message}`);
+        }
+
+        // ============================================
+        // Connection Mode
+        // ============================================
+        function setConnectionMode(mode) {
+            connectionMode = mode;
+            
+            wifiModeBtn.classList.toggle('active', mode === 'wifi');
+            bleModeBtn.classList.toggle('active', mode === 'ble');
+            wifiConfig.classList.toggle('hidden', mode !== 'wifi');
+            
+            // Check BLE support
+            if (mode === 'ble' && !navigator.bluetooth) {
+                log('Web Bluetooth not supported in this browser', 'error');
+                log('Use Chrome on Android or desktop', 'error');
+            }
+            
+            localStorage.setItem('connectionMode', mode);
+        }
+
+        // ============================================
+        // UI Updates
+        // ============================================
+        function updateUI(connected) {
+            isConnected = connected;
+            
+            if (connected) {
+                statusDot.classList.add('connected');
+                statusDot.classList.remove('connecting');
+                statusText.textContent = 'Connected';
+                connectBtn.classList.add('connected');
+                connectIcon.textContent = '✅';
+                connectText.textContent = 'Disconnect';
+                
+                outputCard.classList.remove('hidden');
+                speedCard.classList.remove('hidden');
+                directionCard.classList.remove('hidden');
+                logCard.classList.remove('hidden');
+                fireContainer.classList.remove('hidden');
+            } else {
+                statusDot.classList.remove('connected', 'connecting');
+                statusText.textContent = 'Disconnected';
+                connectBtn.classList.remove('connected');
+                connectIcon.textContent = '📡';
+                connectText.textContent = 'Connect';
+                
+                outputCard.classList.add('hidden');
+                speedCard.classList.add('hidden');
+                directionCard.classList.add('hidden');
+                logCard.classList.add('hidden');
+                fireContainer.classList.add('hidden');
+            }
+            
+            connectBtn.disabled = false;
+        }
+
+        function setConnecting() {
+            statusDot.classList.add('connecting');
+            statusText.textContent = 'Connecting...';
+            connectIcon.textContent = '⏳';
+            connectText.textContent = 'Connecting...';
+            connectBtn.disabled = true;
+        }
+
+        function updateOutputs(data) {
+            // Current Speed
+            const currentSpeed = data.currentSpeed !== undefined ? data.currentSpeed : 0;
+            document.getElementById('currentSpeedValue').textContent = Math.round(currentSpeed) + '%';
+            
+            // Target Speed
+            const targetSpeed = data.targetSpeed !== undefined ? data.targetSpeed : 0;
+            document.getElementById('targetSpeedValue').textContent = Math.round(targetSpeed) + '%';
+            speedSlider.value = targetSpeed;
+            speedDisplay.textContent = Math.round(targetSpeed);
+            
+            // Direction
+            const direction = data.direction !== undefined ? data.direction : true;
+            const directionEl = document.getElementById('velocityDirection');
+            directionEl.textContent = direction ? '⬆️ FORWARD' : '⬇️ REVERSE';
+            directionEl.classList.toggle('forward', direction);
+            directionEl.classList.toggle('reverse', !direction);
+            document.getElementById('fwdBtn').classList.toggle('active', direction);
+            document.getElementById('revBtn').classList.toggle('active', !direction);
+            document.getElementById('revBtn').classList.toggle('reverse', !direction);
+            
+            // Velocity
+            const velocity = data.velocity !== undefined ? data.velocity : 0;
+            document.getElementById('velocityValue').textContent = velocity.toFixed(2);
+            
+            // Enabled
+            const enabled = data.enabled !== undefined ? data.enabled : false;
+            const enabledEl = document.getElementById('enabledOutput');
+            document.getElementById('enabledValue').textContent = enabled ? 'ON' : 'OFF';
+            enabledEl.classList.toggle('active', enabled);
+            
+            // Firing
+            const firing = data.firingThrusters !== undefined ? data.firingThrusters : false;
+            const firingEl = document.getElementById('firingOutput');
+            document.getElementById('firingValue').textContent = firing ? '🔥 ON' : 'OFF';
+            firingEl.classList.toggle('firing', firing);
+            fireBtn.classList.toggle('firing', firing);
+        }
+
+        // ============================================
+        // Connection Handling
+        // ============================================
+        async function toggleConnection() {
+            if (isConnected) {
+                disconnect();
+            } else {
+                await connect();
+            }
+        }
+
+        async function connect() {
+            if (connectionMode === 'wifi') {
+                await connectWifi();
+            } else {
+                await connectBLE();
+            }
+        }
+
+        function disconnect() {
+            if (connectionMode === 'wifi') {
+                disconnectWifi();
+            } else {
+                disconnectBLE();
+            }
+        }
+
+        // ============================================
+        // WiFi/HTTP Connection
+        // ============================================
+        async function connectWifi() {
+            try {
+                setConnecting();
+                
+                let host = hostInput.value.trim() || DEFAULT_HOST;
+                
+                // Add http:// if not present
+                if (!host.startsWith('http://') && !host.startsWith('https://')) {
+                    host = 'http://' + host;
+                }
+                
+                httpBaseUrl = host;
+                log(`Connecting to ${httpBaseUrl}...`);
+                
+                // Test connection by fetching state
+                const response = await fetch(`${httpBaseUrl}/api/state`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                log('Connected via WiFi!', 'success');
+                updateUI(true);
+                updateOutputs(data);
+                
+                // Start polling
+                startPolling();
+                
+                // Save host for next time
+                localStorage.setItem('lastHost', hostInput.value);
+                
+            } catch (error) {
+                log(`Connection failed: ${error.message}`, 'error');
+                updateUI(false);
+            }
+        }
+
+        function disconnectWifi() {
+            stopPolling();
+            log('Disconnected from WiFi');
+            updateUI(false);
+        }
+
+        function startPolling() {
+            stopPolling();
+            pollTimer = setInterval(pollStatus, POLL_INTERVAL_MS);
+        }
+
+        function stopPolling() {
+            if (pollTimer) {
+                clearInterval(pollTimer);
+                pollTimer = null;
+            }
+        }
+
+        async function pollStatus() {
+            if (!isConnected || connectionMode !== 'wifi') return;
+            
+            try {
+                const response = await fetch(`${httpBaseUrl}/api/state`, {
+                    method: 'GET',
+                    mode: 'cors',
+                    cache: 'no-cache'
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    updateOutputs(data);
+                }
+            } catch (error) {
+                log(`Connection lost: ${error.message}`, 'error');
+                disconnectWifi();
+            }
+        }
+
+        // ============================================
+        // BLE Connection
+        // ============================================
+        async function connectBLE() {
+            if (!navigator.bluetooth) {
+                log('Web Bluetooth not supported', 'error');
+                return;
+            }
+            
+            try {
+                setConnecting();
+                log('Scanning for Space Tornado...');
+                
+                bleDevice = await navigator.bluetooth.requestDevice({
+                    filters: [{ name: 'SpaceTornado' }],
+                    optionalServices: [BLE_SERVICE_UUID]
+                });
+                
+                log(`Found: ${bleDevice.name}`);
+                bleDevice.addEventListener('gattserverdisconnected', onBLEDisconnected);
+                
+                log('Connecting to GATT server...');
+                bleServer = await bleDevice.gatt.connect();
+                
+                log('Getting service...');
+                bleService = await bleServer.getPrimaryService(BLE_SERVICE_UUID);
+                
+                log('Getting characteristics...');
+                commandChar = await bleService.getCharacteristic(BLE_COMMAND_CHAR_UUID);
+                statusChar = await bleService.getCharacteristic(BLE_STATUS_CHAR_UUID);
+                
+                // Subscribe to status notifications
+                await statusChar.startNotifications();
+                statusChar.addEventListener('characteristicvaluechanged', onBLEStatusUpdate);
+                
+                log('Connected via Bluetooth!', 'success');
+                updateUI(true);
+                
+                // Request initial status
+                sendCommand('?');
+                
+            } catch (error) {
+                log(`BLE connection failed: ${error.message}`, 'error');
+                updateUI(false);
+            }
+        }
+
+        function disconnectBLE() {
+            if (bleDevice && bleDevice.gatt.connected) {
+                bleDevice.gatt.disconnect();
+            }
+            log('Disconnected from Bluetooth');
+            updateUI(false);
+        }
+
+        function onBLEDisconnected() {
+            log('Bluetooth disconnected', 'error');
+            updateUI(false);
+        }
+
+        function onBLEStatusUpdate(event) {
+            const value = new TextDecoder().decode(event.target.value);
+            parseBLEStatus(value);
+        }
+
+        function parseBLEStatus(data) {
+            // Parse status string from ESP32
+            // Format: "S:50.0,T:60.0,D:1,E:1,F:0,V:25.5"
+            try {
+                const parts = data.split(',');
+                const status = {};
+                
+                parts.forEach(part => {
+                    const [key, val] = part.split(':');
+                    switch(key) {
+                        case 'S': status.currentSpeed = parseFloat(val); break;
+                        case 'T': status.targetSpeed = parseFloat(val); break;
+                        case 'D': status.direction = val === '1'; break;
+                        case 'E': status.enabled = val === '1'; break;
+                        case 'F': status.firingThrusters = val === '1'; break;
+                        case 'V': status.velocity = parseFloat(val); break;
+                    }
+                });
+                
+                updateOutputs(status);
+            } catch (e) {
+                // May be a log message
+                log(data);
+            }
+        }
+
+        // ============================================
+        // Commands
+        // ============================================
+        async function sendCommand(cmd) {
+            if (connectionMode === 'wifi') {
+                await sendHttpCommand(cmd);
+            } else {
+                await sendBLECommand(cmd);
+            }
+        }
+
+        async function sendHttpCommand(cmd) {
+            if (!isConnected) return;
+            
+            try {
+                // Parse command and send appropriate API call
+                if (cmd.startsWith('S')) {
+                    const speed = cmd.substring(1);
+                    await fetch(`${httpBaseUrl}/api/speed?value=${speed}`, { method: 'POST' });
+                } else if (cmd === 'D') {
+                    await fetch(`${httpBaseUrl}/api/direction?value=forward`, { method: 'POST' });
+                } else if (cmd === 'R') {
+                    await fetch(`${httpBaseUrl}/api/direction?value=reverse`, { method: 'POST' });
+                } else if (cmd === 'F') {
+                    await fetch(`${httpBaseUrl}/api/fire?state=1`, { method: 'POST' });
+                } else if (cmd === 'f') {
+                    await fetch(`${httpBaseUrl}/api/fire?state=0`, { method: 'POST' });
+                } else if (cmd === 'X') {
+                    // Emergency stop - set speed to 0 and stop firing
+                    await fetch(`${httpBaseUrl}/api/speed?value=0`, { method: 'POST' });
+                    await fetch(`${httpBaseUrl}/api/fire?state=0`, { method: 'POST' });
+                }
+            } catch (error) {
+                log(`Command failed: ${error.message}`, 'error');
+            }
+        }
+
+        async function sendBLECommand(cmd) {
+            if (!commandChar) {
+                log('Not connected', 'error');
+                return;
+            }
+            
+            try {
+                const encoder = new TextEncoder();
+                await commandChar.writeValue(encoder.encode(cmd));
+            } catch (error) {
+                log(`BLE send failed: ${error.message}`, 'error');
+            }
+        }
+
+        // ============================================
+        // Control Actions
+        // ============================================
+        function updateSpeedDisplay(value) {
+            speedDisplay.textContent = value;
+        }
+
+        async function sendSpeed(value) {
+            value = Math.max(0, Math.min(100, parseInt(value)));
+            speedSlider.value = value;
+            speedDisplay.textContent = value;
+            await sendCommand(`S${value}`);
+            log(`Speed set to ${value}%`);
+        }
+
+        async function adjustSpeed(delta) {
+            const current = parseInt(speedSlider.value);
+            await sendSpeed(current + delta);
+        }
+
+        async function setDirection(forward) {
+            await sendCommand(forward ? 'D' : 'R');
+            document.getElementById('fwdBtn').classList.toggle('active', forward);
+            document.getElementById('fwdBtn').classList.remove('reverse');
+            document.getElementById('revBtn').classList.toggle('active', !forward);
+            document.getElementById('revBtn').classList.toggle('reverse', !forward);
+            log(`Direction: ${forward ? 'Forward' : 'Reverse'}`);
+        }
+
+        async function startFiring() {
+            await sendCommand('F');
+            fireBtn.classList.add('firing');
+            log('🔥 THRUSTERS FIRING!', 'fire');
+        }
+
+        async function stopFiring() {
+            await sendCommand('f');
+            fireBtn.classList.remove('firing');
+            log('Thrusters stopped');
+        }
+
+        async function emergencyStop() {
+            await sendCommand('X');
+            speedSlider.value = 0;
+            speedDisplay.textContent = 0;
+            log('🛑 EMERGENCY STOP!', 'error');
+        }
+
+        // ============================================
+        // Initialization
+        // ============================================
+        function init() {
+            // Restore saved settings
+            const savedMode = localStorage.getItem('connectionMode');
+            if (savedMode) {
+                setConnectionMode(savedMode);
+            }
+            
+            const savedHost = localStorage.getItem('lastHost');
+            if (savedHost) {
+                hostInput.value = savedHost;
+            }
+            
+            // Prevent context menu on long press (mobile)
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            
+            // Prevent touchend from triggering twice
+            fireBtn.addEventListener('touchend', e => e.preventDefault());
+            
+            log('Space Tornado Control ready');
+            log(`Default host: ${DEFAULT_HOST}`);
+        }
+
+        init();
+    </script>
+</body>
+</html>

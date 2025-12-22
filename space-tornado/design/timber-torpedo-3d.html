@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timber Torpedo - 3D Isometric View</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            width: 100%;
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, #f39c12, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        #canvas-container {
+            flex: 1;
+            width: 100%;
+            position: relative;
+        }
+        canvas {
+            display: block;
+        }
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0,0,0,0.7);
+            padding: 15px 25px;
+            border-radius: 10px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .controls label {
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        .controls input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .specs {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            max-width: 200px;
+        }
+        .specs h3 {
+            color: #f39c12;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+        .specs p {
+            color: #ccc;
+            margin: 5px 0;
+        }
+        .specs span {
+            color: #3498db;
+            font-weight: bold;
+        }
+        .instructions {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #666;
+            font-size: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🚀 THE TIMBER TORPEDO</h1>
+        <p class="subtitle">Interactive 3D Isometric Render</p>
+    </header>
+    
+    <div id="canvas-container">
+        <canvas id="renderCanvas"></canvas>
+        <div class="specs">
+            <h3>📐 Specifications</h3>
+            <p>Length: <span>4' 5" (53")</span></p>
+            <p>Width: <span>28"</span></p>
+            <p>Drive Cutout: <span>>12" dia</span></p>
+            <p>Casters: <span>4× 3" height</span></p>
+            <p>Material: <span>Wood</span></p>
+        </div>
+        <p class="instructions">🖱️ Drag to rotate • Scroll to zoom</p>
+        <div class="controls">
+            <label><input type="checkbox" id="autoRotate" checked> Auto-rotate</label>
+            <label><input type="checkbox" id="showWireframe"> Wireframe</label>
+            <label><input type="checkbox" id="showDimensions" checked> Dimensions</label>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Scene setup
+        const canvas = document.getElementById('renderCanvas');
+        const container = document.getElementById('canvas-container');
+        
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x1a1a2e);
+        
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.set(40, 30, 40);
+        
+        const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        
+        // Orbit controls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.autoRotate = true;
+        controls.autoRotateSpeed = 1;
+        
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(20, 40, 20);
+        directionalLight.castShadow = true;
+        directionalLight.shadow.mapSize.width = 2048;
+        directionalLight.shadow.mapSize.height = 2048;
+        scene.add(directionalLight);
+        
+        const fillLight = new THREE.DirectionalLight(0x4488ff, 0.3);
+        fillLight.position.set(-20, 10, -20);
+        scene.add(fillLight);
+        
+        // Scale: 1 unit = 1 inch
+        const LENGTH = 53;  // 4'5" in inches
+        const WIDTH = 28;   // 28 inches
+        const THICKNESS = 1.5; // Board thickness
+        const DRIVE_HOLE_RADIUS = 6.5; // >12" diameter, so 6.5" radius
+        const CASTER_RADIUS = 1.5;
+        const CASTER_HEIGHT = 3;
+        
+        // Wood material
+        const woodMaterial = new THREE.MeshStandardMaterial({
+            color: 0xDEB887,
+            roughness: 0.8,
+            metalness: 0.1,
+        });
+        
+        // Create the main board shape (ellipse with hole)
+        const boardShape = new THREE.Shape();
+        
+        // Create ellipse path
+        const ellipsePath = new THREE.EllipseCurve(
+            0, 0,           // center
+            WIDTH/2, LENGTH/2,  // x radius, y radius
+            0, 2 * Math.PI,   // start angle, end angle
+            false,           // clockwise
+            0                // rotation
+        );
+        const ellipsePoints = ellipsePath.getPoints(64);
+        boardShape.setFromPoints(ellipsePoints);
+        
+        // Create hole for drive wheel
+        const holePath = new THREE.Path();
+        holePath.absellipse(0, 0, DRIVE_HOLE_RADIUS, DRIVE_HOLE_RADIUS, 0, Math.PI * 2, true);
+        boardShape.holes.push(holePath);
+        
+        // Extrude the shape
+        const extrudeSettings = {
+            depth: THICKNESS,
+            bevelEnabled: true,
+            bevelThickness: 0.2,
+            bevelSize: 0.2,
+            bevelSegments: 3
+        };
+        
+        const boardGeometry = new THREE.ExtrudeGeometry(boardShape, extrudeSettings);
+        boardGeometry.rotateX(-Math.PI / 2);
+        
+        const board = new THREE.Mesh(boardGeometry, woodMaterial);
+        board.position.y = CASTER_HEIGHT;
+        board.castShadow = true;
+        board.receiveShadow = true;
+        scene.add(board);
+        
+        // Caster wheel material
+        const casterMaterial = new THREE.MeshStandardMaterial({
+            color: 0x333333,
+            roughness: 0.5,
+            metalness: 0.7,
+        });
+        
+        const casterBracketMaterial = new THREE.MeshStandardMaterial({
+            color: 0x666666,
+            roughness: 0.4,
+            metalness: 0.8,
+        });
+        
+        // Caster positions (x, z coordinates)
+        const casterPositions = [
+            { x: -WIDTH/4, z: -LENGTH/3 },   // Front left
+            { x: WIDTH/4, z: -LENGTH/3 },    // Front right
+            { x: -WIDTH/4, z: LENGTH/3 },    // Rear left
+            { x: WIDTH/4, z: LENGTH/3 },     // Rear right
+        ];
+        
+        // Create casters
+        casterPositions.forEach(pos => {
+            // Caster bracket (cylinder)
+            const bracketGeom = new THREE.CylinderGeometry(1.2, 1.2, 1, 16);
+            const bracket = new THREE.Mesh(bracketGeom, casterBracketMaterial);
+            bracket.position.set(pos.x, CASTER_HEIGHT - 0.5, pos.z);
+            bracket.castShadow = true;
+            scene.add(bracket);
+            
+            // Caster wheel (torus-like shape)
+            const wheelGeom = new THREE.CylinderGeometry(CASTER_RADIUS, CASTER_RADIUS, 0.8, 16);
+            wheelGeom.rotateZ(Math.PI / 2);
+            const wheel = new THREE.Mesh(wheelGeom, casterMaterial);
+            wheel.position.set(pos.x, CASTER_RADIUS, pos.z);
+            wheel.castShadow = true;
+            scene.add(wheel);
+            
+            // Wheel hub
+            const hubGeom = new THREE.CylinderGeometry(0.5, 0.5, 1, 16);
+            hubGeom.rotateZ(Math.PI / 2);
+            const hub = new THREE.Mesh(hubGeom, casterBracketMaterial);
+            hub.position.set(pos.x, CASTER_RADIUS, pos.z);
+            scene.add(hub);
+        });
+        
+        // Drive wheel representation (in the hole)
+        const driveWheelGeom = new THREE.CylinderGeometry(DRIVE_HOLE_RADIUS - 0.5, DRIVE_HOLE_RADIUS - 0.5, 4, 32);
+        const driveWheelMaterial = new THREE.MeshStandardMaterial({
+            color: 0x2c3e50,
+            roughness: 0.3,
+            metalness: 0.8,
+        });
+        const driveWheel = new THREE.Mesh(driveWheelGeom, driveWheelMaterial);
+        driveWheel.position.y = CASTER_HEIGHT - 0.5;
+        driveWheel.castShadow = true;
+        scene.add(driveWheel);
+        
+        // Drive wheel tread
+        const treadGeom = new THREE.TorusGeometry(DRIVE_HOLE_RADIUS - 0.5, 0.8, 8, 32);
+        const treadMaterial = new THREE.MeshStandardMaterial({
+            color: 0x1a1a1a,
+            roughness: 0.9,
+            metalness: 0.1,
+        });
+        const tread = new THREE.Mesh(treadGeom, treadMaterial);
+        tread.rotation.x = Math.PI / 2;
+        tread.position.y = CASTER_HEIGHT - 0.5;
+        scene.add(tread);
+        
+        // Ground plane
+        const groundGeom = new THREE.PlaneGeometry(200, 200);
+        const groundMaterial = new THREE.MeshStandardMaterial({
+            color: 0x222233,
+            roughness: 1,
+        });
+        const ground = new THREE.Mesh(groundGeom, groundMaterial);
+        ground.rotation.x = -Math.PI / 2;
+        ground.position.y = -0.1;
+        ground.receiveShadow = true;
+        scene.add(ground);
+        
+        // Grid helper
+        const gridHelper = new THREE.GridHelper(100, 20, 0x444466, 0x333344);
+        scene.add(gridHelper);
+        
+        // Dimension lines group
+        const dimensionGroup = new THREE.Group();
+        scene.add(dimensionGroup);
+        
+        // Create dimension lines
+        function createDimensionLine(start, end, color = 0xff6b6b) {
+            const material = new THREE.LineBasicMaterial({ color });
+            const points = [new THREE.Vector3(...start), new THREE.Vector3(...end)];
+            const geometry = new THREE.BufferGeometry().setFromPoints(points);
+            return new THREE.Line(geometry, material);
+        }
+        
+        // Length dimension
+        dimensionGroup.add(createDimensionLine([-WIDTH/2 - 5, CASTER_HEIGHT + 2, -LENGTH/2], [-WIDTH/2 - 5, CASTER_HEIGHT + 2, LENGTH/2]));
+        dimensionGroup.add(createDimensionLine([-WIDTH/2 - 3, CASTER_HEIGHT + 2, -LENGTH/2], [-WIDTH/2 - 7, CASTER_HEIGHT + 2, -LENGTH/2]));
+        dimensionGroup.add(createDimensionLine([-WIDTH/2 - 3, CASTER_HEIGHT + 2, LENGTH/2], [-WIDTH/2 - 7, CASTER_HEIGHT + 2, LENGTH/2]));
+        
+        // Width dimension  
+        dimensionGroup.add(createDimensionLine([-WIDTH/2, CASTER_HEIGHT + 2, LENGTH/2 + 5], [WIDTH/2, CASTER_HEIGHT + 2, LENGTH/2 + 5], 0x6bcfff));
+        dimensionGroup.add(createDimensionLine([-WIDTH/2, CASTER_HEIGHT + 2, LENGTH/2 + 3], [-WIDTH/2, CASTER_HEIGHT + 2, LENGTH/2 + 7], 0x6bcfff));
+        dimensionGroup.add(createDimensionLine([WIDTH/2, CASTER_HEIGHT + 2, LENGTH/2 + 3], [WIDTH/2, CASTER_HEIGHT + 2, LENGTH/2 + 7], 0x6bcfff));
+        
+        // Control handlers
+        document.getElementById('autoRotate').addEventListener('change', (e) => {
+            controls.autoRotate = e.target.checked;
+        });
+        
+        document.getElementById('showWireframe').addEventListener('change', (e) => {
+            woodMaterial.wireframe = e.target.checked;
+        });
+        
+        document.getElementById('showDimensions').addEventListener('change', (e) => {
+            dimensionGroup.visible = e.target.checked;
+        });
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+        
+        animate();
+    </script>
+</body>
+</html>

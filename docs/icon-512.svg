@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a1a2e"/>
+      <stop offset="100%" style="stop-color:#16213e"/>
+    </linearGradient>
+    <linearGradient id="flame" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff6b6b"/>
+      <stop offset="50%" style="stop-color:#e94560"/>
+      <stop offset="100%" style="stop-color:#ffc107"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="100" fill="url(#bg)"/>
+  <g transform="translate(256,256)">
+    <!-- Rocket body -->
+    <path d="M0,-145 C55,-145 70,-90 70,30 L70,80 L40,110 L-40,110 L-70,80 L-70,30 C-70,-90 -55,-145 0,-145" 
+          fill="#e0e0e0" stroke="#fff" stroke-width="4"/>
+    <!-- Nose cone -->
+    <ellipse cx="0" cy="-145" rx="32" ry="55" fill="#00d9ff"/>
+    <!-- Window -->
+    <circle cx="0" cy="-65" r="32" fill="#0f3460" stroke="#00d9ff" stroke-width="4"/>
+    <!-- Fins -->
+    <path d="M-70,50 L-120,135 L-70,110" fill="#e94560"/>
+    <path d="M70,50 L120,135 L70,110" fill="#e94560"/>
+    <!-- Flame -->
+    <path d="M-32,110 Q-20,190 0,230 Q20,190 32,110" fill="url(#flame)">
+      <animate attributeName="d" 
+               values="M-32,110 Q-20,190 0,230 Q20,190 32,110;M-32,110 Q-25,170 0,200 Q25,170 32,110;M-32,110 Q-20,190 0,230 Q20,190 32,110"
+               dur="0.3s" repeatCount="indefinite"/>
+    </path>
+  </g>
+</svg>

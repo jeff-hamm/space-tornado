@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 900" width="600" height="900">
+  <defs>
+    <pattern id="wood" patternUnits="userSpaceOnUse" width="100" height="10">
+      <rect width="100" height="10" fill="#DEB887"/>
+      <path d="M0,2 Q25,0 50,2 T100,2" stroke="#C4A574" stroke-width="0.5" fill="none"/>
+    </pattern>
+    <pattern id="carbon" patternUnits="userSpaceOnUse" width="20" height="20">
+      <rect width="20" height="20" fill="#1a1a1a"/>
+      <rect x="0" y="0" width="10" height="10" fill="#2a2a2a"/>
+      <rect x="10" y="10" width="10" height="10" fill="#2a2a2a"/>
+    </pattern>
+    <linearGradient id="redAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8B0000"/>
+      <stop offset="50%" style="stop-color:#DC143C"/>
+      <stop offset="100%" style="stop-color:#8B0000"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="600" height="900" fill="#0a0a0a"/>
+  
+  <text x="300" y="50" font-family="Arial, sans-serif" font-size="28" font-weight="bold" text-anchor="middle" fill="#DC143C">12 — CARBON VIPER</text>
+  <text x="300" y="75" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="#aaa">Carbon fiber / performance build</text>
+  
+  <!-- Main body - carbon fiber texture -->
+  <ellipse cx="300" cy="460" rx="118" ry="210" fill="url(#carbon)" stroke="#000" stroke-width="3"/>
+  
+  <!-- Red accent stripes -->
+  <rect x="270" y="300" width="8" height="380" fill="url(#redAccent)"/>
+  <rect x="322" y="300" width="8" height="380" fill="url(#redAccent)"/>
+  
+  <!-- Angular aggressive fins -->
+  <path d="M185,600 L155,700 L165,710 L185,660 Z" fill="url(#carbon)" stroke="#DC143C" stroke-width="3"/>
+  <path d="M415,600 L445,700 L435,710 L415,660 Z" fill="url(#carbon)" stroke="#DC143C" stroke-width="3"/>
+  
+  <!-- Carbon fiber weave detail areas -->
+  <rect x="220" y="360" width="160" height="80" fill="url(#carbon)" stroke="#DC143C" stroke-width="2" rx="8"/>
+  <rect x="220" y="500" width="160" height="80" fill="url(#carbon)" stroke="#DC143C" stroke-width="2" rx="8"/>
+  
+  <!-- Performance vents -->
+  <rect x="240" y="380" width="30" height="3" fill="#DC143C"/>
+  <rect x="240" y="387" width="30" height="3" fill="#DC143C"/>
+  <rect x="240" y="394" width="30" height="3" fill="#DC143C"/>
+  <rect x="330" y="380" width="30" height="3" fill="#DC143C"/>
+  <rect x="330" y="387" width="30" height="3" fill="#DC143C"/>
+  <rect x="330" y="394" width="30" height="3" fill="#DC143C"/>
+  
+  <!-- Tech label -->
+  <text x="300" y="450" font-family="Orbitron, Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#DC143C" letter-spacing="3">VIPER-X</text>
+  
+  <!-- Red hot exhaust -->
+  <ellipse cx="300" cy="690" rx="38" ry="58" fill="#DC143C" opacity="0.8"/>
+  <ellipse cx="300" cy="710" rx="30" ry="48" fill="#ff6b35" opacity="0.7"/>
+  <ellipse cx="300" cy="730" rx="22" ry="35" fill="#ffcc00" opacity="0.6"/>
+  
+  <text x="300" y="830" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#DC143C">• Carbon fiber texture</text>
+  <text x="300" y="850" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#DC143C">• Red racing accents</text>
+  <text x="300" y="870" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#DC143C">• Performance vents</text>
+</svg>

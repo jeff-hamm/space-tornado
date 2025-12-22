@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  350W GEARED MOTOR + WHEEL ASSEMBLY
+  ==================================
+  Motor with external gearbox driving a 10" wheel
+  
+  ACTUAL MEASUREMENTS:
+  - Motor length: 7.75" (7 3/4")
+  - Wheel diameter: ~10"
+  - Model: [ATTACH IMAGE TO CHAT FOR OCR]
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 650 850" width="650" height="850">
+  <defs>
+    <!-- Arrow markers -->
+    <marker id="arrowLeft" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+      <path d="M10,0 L10,6 L0,3 z" fill="#333"/>
+    </marker>
+    <marker id="arrowRight" markerWidth="10" markerHeight="10" refX="10" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L10,3 z" fill="#333"/>
+    </marker>
+    <marker id="arrowUp" markerWidth="10" markerHeight="10" refX="3" refY="0" orient="auto">
+      <path d="M0,10 L6,10 L3,0 z" fill="#333"/>
+    </marker>
+    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="3" refY="10" orient="auto">
+      <path d="M0,0 L6,0 L3,10 z" fill="#333"/>
+    </marker>
+    
+    <!-- Metal gradients -->
+    <linearGradient id="motorGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#555"/>
+      <stop offset="50%" style="stop-color:#777"/>
+      <stop offset="100%" style="stop-color:#444"/>
+    </linearGradient>
+    <linearGradient id="gearboxGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#666"/>
+      <stop offset="50%" style="stop-color:#888"/>
+      <stop offset="100%" style="stop-color:#555"/>
+    </linearGradient>
+    <radialGradient id="tireGradient" cx="50%" cy="50%" r="50%">
+      <stop offset="60%" style="stop-color:#2a2a2a"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </radialGradient>
+    
+    <!-- 3D effect gradients -->
+    <linearGradient id="motor3d" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#888"/>
+      <stop offset="100%" style="stop-color:#333"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="650" height="850" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="325" y="30" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">350W GEARED MOTOR + WHEEL</text>
+  <text x="325" y="50" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#e67e22">⚠ Attach motor image to chat for model # OCR</text>
+  
+  <!-- ==================== SIDE VIEW ==================== -->
+  <text x="180" y="80" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#34495e">SIDE VIEW</text>
+  
+  <!-- Motor body (cylindrical, shown from side) -->
+  <rect x="100" y="100" width="160" height="60" fill="url(#motorGradient)" stroke="#333" stroke-width="2" rx="5"/>
+  <!-- Motor end cap -->
+  <rect x="90" y="105" width="15" height="50" fill="#444" stroke="#333" stroke-width="1" rx="3"/>
+  <!-- Motor ventilation lines -->
+  <line x1="120" y1="110" x2="120" y2="150" stroke="#555" stroke-width="1"/>
+  <line x1="140" y1="110" x2="140" y2="150" stroke="#555" stroke-width="1"/>
+  <line x1="160" y1="110" x2="160" y2="150" stroke="#555" stroke-width="1"/>
+  <line x1="180" y1="110" x2="180" y2="150" stroke="#555" stroke-width="1"/>
+  <line x1="200" y1="110" x2="200" y2="150" stroke="#555" stroke-width="1"/>
+  <line x1="220" y1="110" x2="220" y2="150" stroke="#555" stroke-width="1"/>
+  <line x1="240" y1="110" x2="240" y2="150" stroke="#555" stroke-width="1"/>
+  
+  <!-- Motor label area -->
+  <rect x="130" y="118" width="90" height="24" fill="#eee" stroke="#ccc" stroke-width="1" rx="2"/>
+  <text x="175" y="133" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666">MODEL: TBD</text>
+  
+  <!-- Motor shaft -->
+  <rect x="260" y="120" width="25" height="20" fill="#888" stroke="#666" stroke-width="1"/>
+  
+  <!-- Gearbox -->
+  <rect x="285" y="95" width="55" height="70" fill="url(#gearboxGradient)" stroke="#444" stroke-width="2" rx="3"/>
+  <!-- Gearbox detail -->
+  <circle cx="312" cy="130" r="20" fill="#555" stroke="#444" stroke-width="1"/>
+  <circle cx="312" cy="130" r="8" fill="#666"/>
+  
+  <!-- Output shaft to wheel -->
+  <rect x="340" y="125" width="20" height="10" fill="#777" stroke="#555" stroke-width="1"/>
+  
+  <!-- Wheel (10" diameter = large) -->
+  <circle cx="430" cy="130" r="85" fill="url(#tireGradient)" stroke="#111" stroke-width="3"/>
+  <!-- Tire tread -->
+  <circle cx="430" cy="130" r="85" fill="none" stroke="#333" stroke-width="2" stroke-dasharray="10,5"/>
+  <!-- Wheel hub -->
+  <circle cx="430" cy="130" r="30" fill="#666" stroke="#444" stroke-width="2"/>
+  <circle cx="430" cy="130" r="15" fill="#555" stroke="#444" stroke-width="1"/>
+  <!-- Axle -->
+  <circle cx="430" cy="130" r="6" fill="#333"/>
+  
+  <!-- Wires from motor -->
+  <path d="M95,115 Q70,115 60,100" stroke="#c0392b" stroke-width="3" fill="none"/>
+  <path d="M95,125 Q70,125 55,110" stroke="#2980b9" stroke-width="3" fill="none"/>
+  <path d="M95,135 Q70,135 50,120" stroke="#27ae60" stroke-width="3" fill="none"/>
+  <text x="45" y="95" font-family="Arial, sans-serif" font-size="7" fill="#c0392b">+</text>
+  <text x="40" y="105" font-family="Arial, sans-serif" font-size="7" fill="#2980b9">−</text>
+  <text x="35" y="118" font-family="Arial, sans-serif" font-size="7" fill="#27ae60">H</text>
+  
+  <!-- DIMENSIONS -->
+  <!-- Motor length: 7 3/4" -->
+  <line x1="90" y1="180" x2="260" y2="180" stroke="#e74c3c" stroke-width="1.5" marker-start="url(#arrowLeft)" marker-end="url(#arrowRight)"/>
+  <rect x="140" y="185" width="60" height="18" fill="#f8f9fa"/>
+  <text x="170" y="198" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#e74c3c">7 3/4"</text>
+  <text x="170" y="212" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#e74c3c">motor</text>
+  
+  <!-- Wheel diameter: 10" -->
+  <line x1="530" y1="45" x2="530" y2="215" stroke="#333" stroke-width="1" marker-start="url(#arrowUp)" marker-end="url(#arrowDown)"/>
+  <text x="545" y="130" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#333">10"</text>
+  <text x="545" y="145" font-family="Arial, sans-serif" font-size="9" fill="#666">wheel</text>
+  
+  <!-- Total assembly length -->
+  <line x1="90" y1="235" x2="515" y2="235" stroke="#3498db" stroke-width="1" marker-start="url(#arrowLeft)" marker-end="url(#arrowRight)"/>
+  <rect x="260" y="240" width="80" height="18" fill="#f8f9fa"/>
+  <text x="300" y="253" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#3498db">~17" total</text>
+  
+  <!-- Labels -->
+  <text x="175" y="90" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#555">350W MOTOR</text>
+  <text x="312" y="85" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#555">GEARBOX</text>
+  <text x="430" y="235" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#555">DRIVE WHEEL</text>
+  
+  <!-- ==================== TOP VIEW ==================== -->
+  <line x1="30" y1="280" x2="620" y2="280" stroke="#ddd" stroke-width="1"/>
+  <text x="325" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#34495e">TOP VIEW</text>
+  
+  <!-- Motor (top view - circular) -->
+  <ellipse cx="130" cy="390" rx="30" ry="80" fill="url(#motorGradient)" stroke="#333" stroke-width="2"/>
+  <ellipse cx="130" cy="390" rx="20" ry="60" fill="#555" stroke="#444" stroke-width="1"/>
+  
+  <!-- Gearbox (top view) -->
+  <rect x="160" y="355" width="70" height="70" fill="url(#gearboxGradient)" stroke="#444" stroke-width="2" rx="5"/>
+  <circle cx="195" cy="390" r="25" fill="#555" stroke="#444" stroke-width="1"/>
+  <circle cx="195" cy="390" r="10" fill="#666"/>
+  
+  <!-- Wheel (top view - thin rectangle) -->
+  <rect x="230" y="340" width="30" height="100" fill="url(#tireGradient)" stroke="#111" stroke-width="2" rx="5"/>
+  
+  <!-- Axle through wheel -->
+  <line x1="195" y1="390" x2="260" y2="390" stroke="#666" stroke-width="4"/>
+  
+  <!-- Width dimension -->
+  <line x1="245" y1="460" x2="245" y2="500" stroke="#333" stroke-width="0.5"/>
+  <line x1="230" y1="480" x2="260" y2="480" stroke="#333" stroke-width="1" marker-start="url(#arrowLeft)" marker-end="url(#arrowRight)"/>
+  <text x="245" y="495" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#333">~2.5"</text>
+  
+  <!-- ==================== ISOMETRIC 3D VIEW ==================== -->
+  <line x1="300" y1="280" x2="300" y2="530" stroke="#ddd" stroke-width="1"/>
+  <text x="470" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#34495e">3D ISOMETRIC VIEW</text>
+  
+  <!-- 3D Motor body -->
+  <path d="M380,350 L480,350 L500,370 L500,430 L480,450 L380,450 L360,430 L360,370 Z" 
+        fill="url(#motor3d)" stroke="#333" stroke-width="2"/>
+  <!-- Motor top face -->
+  <path d="M380,350 L480,350 L500,370 L400,370 Z" fill="#999" stroke="#333" stroke-width="1"/>
+  <!-- Motor ribs -->
+  <line x1="400" y1="360" x2="400" y2="440" stroke="#555" stroke-width="1"/>
+  <line x1="420" y1="355" x2="420" y2="445" stroke="#555" stroke-width="1"/>
+  <line x1="440" y1="352" x2="440" y2="448" stroke="#555" stroke-width="1"/>
+  <line x1="460" y1="350" x2="460" y2="450" stroke="#555" stroke-width="1"/>
+  
+  <!-- 3D Gearbox -->
+  <path d="M500,355 L540,355 L560,375 L560,425 L540,445 L500,445 L500,355" 
+        fill="#777" stroke="#444" stroke-width="2"/>
+  <path d="M500,355 L540,355 L560,375 L520,375 Z" fill="#999" stroke="#444" stroke-width="1"/>
+  
+  <!-- 3D Wheel -->
+  <ellipse cx="590" cy="400" rx="15" ry="60" fill="url(#tireGradient)" stroke="#111" stroke-width="2"/>
+  <!-- Wheel hub 3D -->
+  <ellipse cx="580" cy="400" rx="8" ry="25" fill="#666" stroke="#444" stroke-width="1"/>
+  
+  <!-- Axle 3D -->
+  <line x1="560" y1="400" x2="580" y2="400" stroke="#555" stroke-width="6"/>
+  
+  <!-- 3D dimension callouts -->
+  <text x="430" y="470" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666">Motor: 7.75"</text>
+  <text x="590" y="480" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#666">Wheel: 10"</text>
+  
+  <!-- ==================== SPECIFICATIONS ==================== -->
+  <rect x="30" y="540" width="280" height="150" fill="white" stroke="#3498db" stroke-width="2" rx="5"/>
+  <text x="170" y="565" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#2c3e50">SPECIFICATIONS</text>
+  
+  <text x="45" y="590" font-family="Arial, sans-serif" font-size="10" fill="#333">Motor Type:</text>
+  <text x="180" y="590" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" font-weight="bold">Geared DC Motor</text>
+  
+  <text x="45" y="610" font-family="Arial, sans-serif" font-size="10" fill="#333">Power:</text>
+  <text x="180" y="610" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" font-weight="bold">350W</text>
+  
+  <text x="45" y="630" font-family="Arial, sans-serif" font-size="10" fill="#333">Motor Length:</text>
+  <text x="180" y="630" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c" font-weight="bold">7 3/4" (7.75")</text>
+  
+  <text x="45" y="650" font-family="Arial, sans-serif" font-size="10" fill="#333">Wheel Diameter:</text>
+  <text x="180" y="650" font-family="Arial, sans-serif" font-size="10" fill="#2c3e50" font-weight="bold">~10"</text>
+  
+  <text x="45" y="670" font-family="Arial, sans-serif" font-size="10" fill="#333">Model #:</text>
+  <text x="180" y="670" font-family="Arial, sans-serif" font-size="10" fill="#e67e22" font-weight="bold">[Attach image for OCR]</text>
+  
+  <!-- ==================== MOUNTING NOTES ==================== -->
+  <rect x="340" y="540" width="280" height="150" fill="#fff8e1" stroke="#ffc107" stroke-width="2" rx="5"/>
+  <text x="480" y="565" font-family="Arial, sans-serif" font-size="12" font-weight="bold" text-anchor="middle" fill="#f57c00">⚙️ MOUNTING NOTES</text>
+  
+  <text x="355" y="590" font-family="Arial, sans-serif" font-size="9" fill="#666">• Gearbox has mounting ears/flanges</text>
+  <text x="355" y="608" font-family="Arial, sans-serif" font-size="9" fill="#666">• Motor + gearbox ~7" total (before wheel)</text>
+  <text x="355" y="626" font-family="Arial, sans-serif" font-size="9" fill="#666">• Total assembly ~17" long</text>
+  <text x="355" y="644" font-family="Arial, sans-serif" font-size="9" fill="#666">• Wheel axle height critical: 4.75" from floor</text>
+  <text x="355" y="662" font-family="Arial, sans-serif" font-size="9" fill="#666">• Cutout must clear gearbox width</text>
+  <text x="355" y="680" font-family="Arial, sans-serif" font-size="9" fill="#c62828" font-weight="bold">• May need 14"+ cutout for clearance!</text>
+  
+  <!-- ==================== WOOD THICKNESS ==================== -->
+  <rect x="30" y="710" width="590" height="60" fill="#e8f5e9" stroke="#27ae60" stroke-width="2" rx="5"/>
+  <text x="325" y="733" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#2e7d32">🪵 WOOD THICKNESS: 3/4" deck + 3/4" doubler at cutout = 1.5" mounting surface</text>
+  <text x="325" y="755" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#666">Gearbox mounting flanges bolt through the reinforced area around cutout</text>
+  
+  <!-- Footer -->
+  <text x="325" y="800" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#999">Timber Torpedo Drive System | December 2025</text>
+  <text x="325" y="815" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#e67e22">📸 Drop motor_imgate.png into chat for model number OCR</text>
+</svg>
