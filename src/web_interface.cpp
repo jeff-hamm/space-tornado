@@ -68,12 +68,13 @@ void initWebInterface() {
     
     // Root page - main control interface
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-        String html = R"(
+        String html = R"rawliteral(
 <!DOCTYPE html>
 <html>
 <head>
     <title>Space Tornado Control</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -152,7 +153,7 @@ void initWebInterface() {
         .fire-button:active {
             background: #b71c1c;
         }
-        .fire-button.fireing {
+        .fire-button.firing {
             background: #ff6f00;
             animation: pulse 0.5s infinite;
         }
@@ -177,16 +178,29 @@ void initWebInterface() {
         a:hover {
             text-decoration: underline;
         }
+        .firing-indicator {
+            display: none;
+            background: #ff6f00;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            animation: pulse 0.3s infinite;
+        }
+        .firing-indicator.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🚀 Space Tornado Control</h1>
+            <h1>&#128640; Space Tornado Control</h1>
         </div>
         
+        <div id="firingIndicator" class="firing-indicator">&#128293; THRUSTERS FIRING!</div>
+        
         <div class="status-card">
-            <h2>Status</h2>
+            <h2>Current Outputs</h2>
             <div class="status-item">
                 <span>Current Speed:</span>
                 <span class="value-display" id="currentSpeed">0%</span>
@@ -200,12 +214,16 @@ void initWebInterface() {
                 <span class="value-display" id="direction">FORWARD</span>
             </div>
             <div class="status-item">
-                <span>Approximate Velocity:</span>
-                <span class="value-display" id="velocity">0</span>
+                <span>Velocity:</span>
+                <span class="value-display" id="velocity">0.00</span>
             </div>
             <div class="status-item">
-                <span>Enabled:</span>
+                <span>System Enabled:</span>
                 <span class="value-display" id="enabled">NO</span>
+            </div>
+            <div class="status-item">
+                <span>Thrusters Firing:</span>
+                <span class="value-display" id="firing">NO</span>
             </div>
             <div class="status-item">
                 <span>Last Update:</span>
@@ -225,15 +243,15 @@ void initWebInterface() {
         
         <div class="control-section">
             <h2>Direction</h2>
-            <button onclick="toggleDirection()" style="width: 100%; padding: 15px; font-size: 20px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer;">
-                <span id="directionButton">TOGGLE DIRECTION</span>
+            <button id="directionButton" style="width: 100%; padding: 15px; font-size: 20px; background: #2196F3; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                FORWARD
             </button>
         </div>
         
         <div class="control-section">
             <h2>Thrusters</h2>
-            <button class="fire-button" id="fireButton" onmousedown="startFire()" onmouseup="stopFire()" ontouchstart="startFire()" ontouchend="stopFire()">
-                🔥 FIRE THRUSTERS
+            <button class="fire-button" id="fireButton">
+                &#128293; FIRE THRUSTERS
             </button>
         </div>
         
@@ -244,73 +262,75 @@ void initWebInterface() {
     </div>
     
     <script>
-        let currentDirection = true;
-        let isFiring = false;
+        var currentDirection = true;
+        var isFiring = false;
         
-        const speedSlider = document.getElementById('speedSlider');
-        const speedValue = document.getElementById('speedValue');
+        var speedSlider = document.getElementById("speedSlider");
+        var speedValue = document.getElementById("speedValue");
+        var fireButton = document.getElementById("fireButton");
+        var directionButton = document.getElementById("directionButton");
+        var firingIndicator = document.getElementById("firingIndicator");
         
-        speedSlider.addEventListener('input', function() {
-            const value = this.value;
-            speedValue.textContent = value + '%';
+        speedSlider.addEventListener("input", function() {
+            var value = this.value;
+            speedValue.textContent = value + "%";
             setSpeed(value);
         });
         
         function setSpeed(speed) {
-            fetch('/api/speed?value=' + speed, { method: 'POST' })
-                .then(response => response.text())
-                .then(data => console.log('Speed set:', data));
+            fetch("/api/speed?value=" + speed, { method: "POST" });
         }
         
-        function toggleDirection() {
-            // Toggle direction (send opposite of current)
-            const newDirection = !currentDirection;
-            fetch('/api/direction?value=' + (newDirection ? 'forward' : 'reverse'), { method: 'POST' })
-                .then(response => response.text())
-                .then(data => {
-                    console.log('Direction set:', data);
-                    // Status will update on next poll
-                });
-        }
+        directionButton.addEventListener("click", function() {
+            var newDirection = !currentDirection;
+            fetch("/api/direction?value=" + (newDirection ? "forward" : "reverse"), { method: "POST" });
+        });
+        
+        fireButton.addEventListener("mousedown", startFire);
+        fireButton.addEventListener("mouseup", stopFire);
+        fireButton.addEventListener("mouseleave", stopFire);
+        fireButton.addEventListener("touchstart", function(e) { e.preventDefault(); startFire(); });
+        fireButton.addEventListener("touchend", function(e) { e.preventDefault(); stopFire(); });
         
         function startFire() {
             if (!isFiring) {
                 isFiring = true;
-                const button = document.getElementById('fireButton');
-                button.classList.add('fireing');
-                fetch('/api/fire?state=1', { method: 'POST' });
+                fireButton.classList.add("firing");
+                fetch("/api/fire?state=1", { method: "POST" });
             }
         }
         
         function stopFire() {
             if (isFiring) {
                 isFiring = false;
-                const button = document.getElementById('fireButton');
-                button.classList.remove('fireing');
-                fetch('/api/fire?state=0', { method: 'POST' });
+                fireButton.classList.remove("firing");
+                fetch("/api/fire?state=0", { method: "POST" });
             }
         }
         
         function updateStatus() {
-            fetch('/api/state')
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById('currentSpeed').textContent = data.currentSpeed.toFixed(1) + '%';
-                    document.getElementById('targetSpeed').textContent = data.targetSpeed.toFixed(1) + '%';
-                    document.getElementById('direction').textContent = data.direction ? 'FORWARD' : 'REVERSE';
-                    document.getElementById('velocity').textContent = data.velocity.toFixed(2);
-                    document.getElementById('enabled').textContent = data.enabled ? 'YES' : 'NO';
-                    document.getElementById('timestamp').textContent = new Date(data.timestamp).toLocaleTimeString();
+            fetch("/api/state")
+                .then(function(response) { return response.json(); })
+                .then(function(data) {
+                    document.getElementById("currentSpeed").textContent = data.currentSpeed.toFixed(1) + "%";
+                    document.getElementById("targetSpeed").textContent = data.targetSpeed.toFixed(1) + "%";
+                    document.getElementById("direction").textContent = data.direction ? "FORWARD" : "REVERSE";
+                    document.getElementById("velocity").textContent = data.velocity.toFixed(2);
+                    document.getElementById("enabled").textContent = data.enabled ? "YES" : "NO";
+                    document.getElementById("firing").textContent = data.firingThrusters ? "YES" : "NO";
+                    document.getElementById("timestamp").textContent = new Date(data.timestamp).toLocaleTimeString();
                     
-                    // Update slider to match target speed
                     speedSlider.value = data.targetSpeed;
-                    speedValue.textContent = data.targetSpeed.toFixed(1) + '%';
+                    speedValue.textContent = data.targetSpeed.toFixed(1) + "%";
                     
-                    // Update direction button
                     currentDirection = data.direction;
-                    document.getElementById('directionButton').textContent = currentDirection ? 'FORWARD' : 'REVERSE';
+                    directionButton.textContent = currentDirection ? "FORWARD" : "REVERSE";
+                    directionButton.style.background = currentDirection ? "#2196F3" : "#e91e63";
+                    
+                    firingIndicator.classList.toggle("active", data.firingThrusters);
+                    document.getElementById("firing").style.color = data.firingThrusters ? "#ff6f00" : "#4CAF50";
                 })
-                .catch(error => console.error('Error:', error));
+                .catch(function(error) { console.error("Error:", error); });
         }
         
         setInterval(updateStatus, 500);
@@ -318,13 +338,13 @@ void initWebInterface() {
     </script>
 </body>
 </html>
-        )";
+)rawliteral";
         request->send(200, "text/html", html);
     });
     
     // API endpoint for state
     server.on("/api/state", HTTP_GET, [](AsyncWebServerRequest *request) {
-        DynamicJsonDocument doc(1024);
+        JsonDocument doc;
         doc["currentSpeed"] = getCurrentSpeedPercent();
         doc["targetSpeed"] = getTargetSpeedPercent();
         doc["direction"] = getCurrentDirection();

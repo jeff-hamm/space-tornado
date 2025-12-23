@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+  <defs>
+    <!-- Air flow arrows -->
+    <marker id="airArrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L8,4 z" fill="#3498db"/>
+    </marker>
+    <marker id="flameArrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L8,4 z" fill="#e74c3c"/>
+    </marker>
+    <!-- Polycarbonate gradient -->
+    <linearGradient id="polycarb" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:0.4"/>
+      <stop offset="50%" style="stop-color:#e8f4f8;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#a8d8ea;stop-opacity:0.4"/>
+    </linearGradient>
+    <!-- 3D print material -->
+    <linearGradient id="printMaterial" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c42"/>
+      <stop offset="50%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#e55a2b"/>
+    </linearGradient>
+    <!-- Flame gradient -->
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="50%" style="stop-color:#f7931e"/>
+      <stop offset="100%" style="stop-color:#ffcc00"/>
+    </linearGradient>
+    <!-- Brass gradient -->
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b8860b"/>
+      <stop offset="50%" style="stop-color:#daa520"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="900" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#f39c12">VORTEX INTAKE CAP</text>
+  <text x="400" y="65" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#888">Split-Base Design for 4" Polycarbonate Tube</text>
+  
+  <!-- ==================== TOP VIEW ==================== -->
+  <text x="200" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#3498db">TOP VIEW</text>
+  
+  <!-- Outer ring of cap -->
+  <circle cx="200" cy="280" r="85" fill="none" stroke="url(#printMaterial)" stroke-width="15"/>
+  
+  <!-- Inner opening (where vortex forms) -->
+  <circle cx="200" cy="280" r="55" fill="#2c3e50" stroke="#444" stroke-width="2"/>
+  
+  <!-- Split gap (the key feature - tangential air entry) -->
+  <!-- Gap 1 - tangential entry slot -->
+  <path d="M200,195 L260,220 L260,230 L200,205 Z" fill="#1a1a2e" stroke="#666" stroke-width="1"/>
+  <!-- Gap 2 - opposite side tangential entry -->
+  <path d="M200,365 L140,340 L140,330 L200,355 Z" fill="#1a1a2e" stroke="#666" stroke-width="1"/>
+  
+  <!-- Air flow arrows (tangential) -->
+  <path d="M300,200 Q280,220 260,225" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="320" y="195" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR IN</text>
+  
+  <path d="M100,360 Q120,340 140,335" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="60" y="375" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR IN</text>
+  
+  <!-- Vortex rotation indicator -->
+  <path d="M200,240 A40,40 0 1,1 240,280" stroke="#f39c12" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <text x="245" y="250" font-family="Arial, sans-serif" font-size="9" fill="#f39c12">VORTEX</text>
+  <text x="245" y="262" font-family="Arial, sans-serif" font-size="9" fill="#f39c12">ROTATION</text>
+  
+  <!-- Torch entry point (1/4" NPT) -->
+  <circle cx="200" cy="370" r="6" fill="url(#brassGrad)" stroke="#8B6914" stroke-width="2"/>
+  <text x="200" y="395" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#daa520">1/4" NPT</text>
+  <text x="200" y="407" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#daa520">TORCH</text>
+  
+  <!-- Dimension - outer diameter -->
+  <line x1="115" y1="280" x2="115" y2="150" stroke="#888" stroke-width="1"/>
+  <line x1="285" y1="280" x2="285" y2="150" stroke="#888" stroke-width="1"/>
+  <line x1="115" y1="160" x2="285" y2="160" stroke="#888" stroke-width="1"/>
+  <text x="200" y="150" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#888">~5.5" OD</text>
+  
+  <!-- Dimension - inner diameter (fits 4" tube) -->
+  <line x1="145" y1="280" x2="145" y2="420" stroke="#666" stroke-width="1"/>
+  <line x1="255" y1="280" x2="255" y2="420" stroke="#666" stroke-width="1"/>
+  <line x1="145" y1="410" x2="255" y2="410" stroke="#666" stroke-width="1"/>
+  <text x="200" y="430" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#666">4" ID (tube fit)</text>
+  
+  <!-- ==================== SIDE VIEW (Cross Section) ==================== -->
+  <text x="600" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#3498db">SIDE VIEW (SECTION)</text>
+  
+  <!-- Polycarbonate tube -->
+  <rect x="530" y="200" width="10" height="200" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  <rect x="660" y="200" width="10" height="200" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  <text x="600" y="420" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#87CEEB">4" POLYCARBONATE TUBE</text>
+  
+  <!-- Vortex cap (cross section) -->
+  <!-- Left side wall -->
+  <rect x="515" y="180" width="25" height="30" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  <!-- Right side wall -->
+  <rect x="660" y="180" width="25" height="30" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  <!-- Top ring -->
+  <rect x="515" y="170" width="170" height="15" rx="3" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  
+  <!-- Air gap (split) - shown as opening in side wall -->
+  <rect x="520" y="190" width="15" height="12" fill="#1a1a2e"/>
+  <rect x="665" y="190" width="15" height="12" fill="#1a1a2e"/>
+  <text x="505" y="200" font-family="Arial, sans-serif" font-size="8" text-anchor="end" fill="#3498db">GAP</text>
+  
+  <!-- Air flow into gaps -->
+  <path d="M480,196 L515,196" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M720,196 L685,196" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  
+  <!-- Flame from torch -->
+  <ellipse cx="600" cy="300" rx="15" ry="50" fill="url(#flameGrad)" opacity="0.8"/>
+  <ellipse cx="600" cy="280" rx="8" ry="30" fill="#ffcc00" opacity="0.6"/>
+  
+  <!-- Torch entry (from side/bottom) -->
+  <rect x="670" y="340" width="40" height="8" fill="url(#brassGrad)" stroke="#8B6914" stroke-width="1"/>
+  <circle cx="715" cy="344" r="8" fill="url(#brassGrad)" stroke="#8B6914" stroke-width="1"/>
+  <text x="735" y="348" font-family="Arial, sans-serif" font-size="9" fill="#daa520">1/4" NPT TORCH</text>
+  
+  <!-- Vortex air flow (spiral arrows inside) -->
+  <path d="M550,250 Q580,230 600,260 Q620,290 580,300" stroke="#3498db" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  <path d="M650,250 Q620,230 600,260 Q580,290 620,300" stroke="#3498db" stroke-width="1.5" fill="none" stroke-dasharray="4,2"/>
+  
+  <!-- Dimension annotations -->
+  <line x1="510" y1="170" x2="510" y2="140" stroke="#888" stroke-width="1"/>
+  <line x1="690" y1="170" x2="690" y2="140" stroke="#888" stroke-width="1"/>
+  <line x1="510" y1="150" x2="690" y2="150" stroke="#888" stroke-width="1"/>
+  <text x="600" y="140" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#888">~5.5" total width</text>
+  
+  <line x1="700" y1="170" x2="730" y2="170" stroke="#888" stroke-width="1"/>
+  <line x1="700" y1="210" x2="730" y2="210" stroke="#888" stroke-width="1"/>
+  <line x1="720" y1="170" x2="720" y2="210" stroke="#888" stroke-width="1"/>
+  <text x="740" y="195" font-family="Arial, sans-serif" font-size="9" fill="#888">~1.5" cap height</text>
+  
+  <!-- ==================== 3D ISOMETRIC VIEW ==================== -->
+  <text x="400" y="490" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#3498db">3D CONCEPT VIEW</text>
+  
+  <!-- Isometric cap body (simplified) -->
+  <ellipse cx="400" cy="580" rx="80" ry="30" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="2"/>
+  <ellipse cx="400" cy="560" rx="80" ry="30" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="2"/>
+  <!-- Inner opening -->
+  <ellipse cx="400" cy="560" rx="50" ry="18" fill="#2c3e50" stroke="#444" stroke-width="2"/>
+  
+  <!-- Split gaps (tangential entries) -->
+  <path d="M420,545 L460,555 L460,565 L420,555 Z" fill="#1a1a2e" stroke="#666" stroke-width="1"/>
+  <path d="M380,575 L340,565 L340,555 L380,565 Z" fill="#1a1a2e" stroke="#666" stroke-width="1"/>
+  
+  <!-- Lip that fits over tube -->
+  <ellipse cx="400" cy="600" rx="55" ry="20" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  <text x="400" y="640" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#ff6b35">Inner lip fits over 4" tube</text>
+  
+  <!-- Air flow arrows -->
+  <path d="M500,540 Q470,545 460,555" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M300,580 Q330,575 340,565" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  
+  <!-- ==================== SPECIFICATIONS ==================== -->
+  <rect x="50" y="680" width="700" height="200" fill="#2c3e50" stroke="#444" stroke-width="2" rx="5"/>
+  <text x="400" y="710" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#f39c12">DESIGN SPECIFICATIONS</text>
+  
+  <text x="80" y="745" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Material:</text>
+  <text x="200" y="745" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">PETG or ABS (heat resistant)</text>
+  
+  <text x="80" y="770" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Inner Diameter:</text>
+  <text x="200" y="770" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">4.0" (fits over polycarbonate tube)</text>
+  
+  <text x="80" y="795" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Outer Diameter:</text>
+  <text x="200" y="795" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">~5.5" (allows air gap slots)</text>
+  
+  <text x="80" y="820" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Cap Height:</text>
+  <text x="200" y="820" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">~1.5" (with inner lip)</text>
+  
+  <text x="80" y="845" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Air Gap Slots:</text>
+  <text x="200" y="845" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">2x tangential, ~0.5" wide</text>
+  
+  <text x="420" y="745" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Torch Entry:</text>
+  <text x="540" y="745" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">1/4" NPT threaded hole in tube wall</text>
+  
+  <text x="420" y="770" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Function:</text>
+  <text x="540" y="770" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">Creates fire vortex via tangential airflow</text>
+  
+  <text x="420" y="795" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Print Orientation:</text>
+  <text x="540" y="795" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">Cap-side down (no supports needed)</text>
+  
+  <text x="420" y="820" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Infill:</text>
+  <text x="540" y="820" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">20-30% (heat dissipation)</text>
+  
+  <text x="420" y="845" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Wall Thickness:</text>
+  <text x="540" y="845" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">3-4 perimeters minimum</text>
+</svg>
