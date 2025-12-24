@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1200" width="1000" height="1200">
+  <defs>
+    <!-- Air flow arrows -->
+    <marker id="airArrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L0,10 L10,5 z" fill="#3498db"/>
+    </marker>
+    <marker id="hotArrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L0,10 L10,5 z" fill="#e74c3c"/>
+    </marker>
+    <!-- Printed material -->
+    <linearGradient id="printMaterial" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c42"/>
+      <stop offset="50%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#e55a2b"/>
+    </linearGradient>
+    <!-- Ramp surface highlight -->
+    <linearGradient id="rampSurface" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffaa66"/>
+      <stop offset="100%" style="stop-color:#cc4411"/>
+    </linearGradient>
+    <!-- Floor/chamber -->
+    <linearGradient id="chamberFloor" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#333"/>
+      <stop offset="100%" style="stop-color:#1a1a1a"/>
+    </linearGradient>
+    <!-- Polycarbonate -->
+    <linearGradient id="polycarb" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:0.4"/>
+      <stop offset="50%" style="stop-color:#e8f4f8;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#a8d8ea;stop-opacity:0.4"/>
+    </linearGradient>
+    <!-- Flame -->
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="50%" style="stop-color:#f7931e"/>
+      <stop offset="100%" style="stop-color:#ffcc00"/>
+    </linearGradient>
+    <!-- Brass -->
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b8860b"/>
+      <stop offset="50%" style="stop-color:#daa520"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="1200" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" font-family="Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#f39c12">VORTEX BASE COLLAR - V3</text>
+  <text x="500" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#888">Passive Convection Design with Angled Ramp-Slots</text>
+  <text x="500" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">(This goes at the BOTTOM of the tube, not the top)</text>
+  
+  <!-- ==================== TOP VIEW ==================== -->
+  <text x="300" y="130" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3498db">TOP VIEW</text>
+  
+  <!-- Outer ring of collar -->
+  <circle cx="300" cy="360" r="130" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="3"/>
+  
+  <!-- Inner chamber (where tube sits) -->
+  <circle cx="300" cy="360" r="52" fill="url(#chamberFloor)" stroke="#444" stroke-width="2"/>
+  
+  <!-- 6 RAMP-SLOTS evenly spaced at 60° intervals -->
+  <!-- Each ramp is angled ~22° from radial -->
+  
+  <!-- Slot 1 (0°) - right side -->
+  <path d="M430,360 L380,340 L380,330 L430,350 Z" fill="#1a1a2e"/>
+  <path d="M380,340 L352,355 L352,365 L380,350 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Slot 2 (60°) - upper right -->
+  <path d="M365,237 L340,285 L330,282 L355,234 Z" fill="#1a1a2e"/>
+  <path d="M340,285 L328,328 L338,332 L347,290 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Slot 3 (120°) - upper left -->
+  <path d="M235,237 L260,285 L270,282 L245,234 Z" fill="#1a1a2e"/>
+  <path d="M260,285 L272,328 L262,332 L253,290 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Slot 4 (180°) - left side -->
+  <path d="M170,360 L220,340 L220,330 L170,350 Z" fill="#1a1a2e"/>
+  <path d="M220,340 L248,355 L248,365 L220,350 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Slot 5 (240°) - lower left -->
+  <path d="M235,483 L260,435 L270,438 L245,486 Z" fill="#1a1a2e"/>
+  <path d="M260,435 L272,392 L262,388 L253,430 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Slot 6 (300°) - lower right -->
+  <path d="M365,483 L340,435 L330,438 L355,486 Z" fill="#1a1a2e"/>
+  <path d="M340,435 L328,392 L338,388 L347,430 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Air flow arrows showing tangential entry -->
+  <path d="M450,355 Q420,345 385,340" stroke="#3498db" stroke-width="2.5" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M385,340 Q360,350 335,365" stroke="#3498db" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  
+  <path d="M375,215 Q355,250 345,285" stroke="#3498db" stroke-width="2.5" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M345,285 Q338,315 325,340" stroke="#3498db" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  
+  <path d="M150,355 Q180,345 215,340" stroke="#3498db" stroke-width="2.5" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M215,340 Q240,350 265,365" stroke="#3498db" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+  
+  <!-- Vortex rotation indicator -->
+  <path d="M275,330 A35,35 0 1,1 325,330" stroke="#f39c12" stroke-width="3" fill="none"/>
+  <path d="M323,333 L330,325 L327,338 Z" fill="#f39c12"/>
+  <text x="300" y="370" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#f39c12">VORTEX</text>
+  
+  <!-- Dimension - outer diameter -->
+  <line x1="170" y1="360" x2="170" y2="160" stroke="#888" stroke-width="1"/>
+  <line x1="430" y1="360" x2="430" y2="160" stroke="#888" stroke-width="1"/>
+  <line x1="170" y1="175" x2="430" y2="175" stroke="#888" stroke-width="1"/>
+  <text x="300" y="165" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#888">~6" OD</text>
+  
+  <!-- Dimension - inner diameter -->
+  <line x1="248" y1="360" x2="248" y2="510" stroke="#666" stroke-width="1"/>
+  <line x1="352" y1="360" x2="352" y2="510" stroke="#666" stroke-width="1"/>
+  <line x1="248" y1="500" x2="352" y2="500" stroke="#666" stroke-width="1"/>
+  <text x="300" y="520" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#666">4" ID (tube fits inside)</text>
+  
+  <!-- Ramp angle callout -->
+  <line x1="380" y1="345" x2="352" y2="360" stroke="#ffcc00" stroke-width="1" stroke-dasharray="3,2"/>
+  <line x1="380" y1="345" x2="380" y2="360" stroke="#666" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="395" y="340" font-family="Arial, sans-serif" font-size="9" fill="#ffcc00">~22°</text>
+  
+  <!-- Slot label -->
+  <text x="455" y="325" font-family="Arial, sans-serif" font-size="10" fill="#3498db">SLOT</text>
+  <path d="M445,330 L420,340" stroke="#3498db" stroke-width="1"/>
+  <text x="455" y="340" font-family="Arial, sans-serif" font-size="9" fill="#666">(air entry)</text>
+  
+  <!-- Ramp label -->
+  <text x="375" y="385" font-family="Arial, sans-serif" font-size="10" fill="#ff9f59">RAMP</text>
+  <path d="M370,380 L365,365" stroke="#ff9f59" stroke-width="1"/>
+  <text x="375" y="398" font-family="Arial, sans-serif" font-size="9" fill="#666">(deflects air)</text>
+  
+  <!-- ==================== CROSS SECTION ==================== -->
+  <text x="750" y="130" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3498db">CROSS-SECTION VIEW</text>
+  
+  <!-- Base floor -->
+  <rect x="570" y="480" width="360" height="12" fill="#333" stroke="#555" stroke-width="1"/>
+  
+  <!-- Left outer wall -->
+  <rect x="570" y="340" width="25" height="140" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  
+  <!-- Right outer wall -->
+  <rect x="905" y="340" width="25" height="140" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  
+  <!-- Left ramp -->
+  <path d="M595,400 L670,480 L670,492 L595,412 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="2"/>
+  
+  <!-- Right ramp -->
+  <path d="M905,400 L830,480 L830,492 L905,412 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="2"/>
+  
+  <!-- Left slot opening -->
+  <rect x="578" y="360" width="12" height="50" fill="#1a1a2e"/>
+  
+  <!-- Right slot opening -->
+  <rect x="910" y="360" width="12" height="50" fill="#1a1a2e"/>
+  
+  <!-- Tube wall sitting on collar -->
+  <rect x="665" y="280" width="10" height="200" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  <rect x="825" y="280" width="10" height="200" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  
+  <!-- Tube sits IN the collar (inner lip) -->
+  <rect x="665" y="450" width="10" height="42" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1" opacity="0.7"/>
+  <rect x="825" y="450" width="10" height="42" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1" opacity="0.7"/>
+  
+  <!-- Air entering slots -->
+  <path d="M545,385 L575,385" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="525" y="380" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR</text>
+  
+  <path d="M955,385 L925,385" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="960" y="380" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR</text>
+  
+  <!-- Air flowing over ramps (tangential - into/out of page) -->
+  <circle cx="700" cy="430" r="12" fill="none" stroke="#3498db" stroke-width="2"/>
+  <circle cx="700" cy="430" r="3" fill="#3498db"/>
+  <text x="715" y="425" font-family="Arial, sans-serif" font-size="8" fill="#3498db">TANGENTIAL</text>
+  <text x="715" y="437" font-family="Arial, sans-serif" font-size="8" fill="#3498db">(INTO PAGE)</text>
+  
+  <circle cx="800" cy="430" r="12" fill="none" stroke="#3498db" stroke-width="2"/>
+  <text x="800" y="435" font-family="Arial, sans-serif" font-size="14" fill="#3498db">×</text>
+  <text x="760" y="425" font-family="Arial, sans-serif" font-size="8" fill="#3498db" text-anchor="end">TANGENTIAL</text>
+  <text x="760" y="437" font-family="Arial, sans-serif" font-size="8" fill="#3498db" text-anchor="end">(OUT OF PAGE)</text>
+  
+  <!-- Dimension - height -->
+  <line x1="940" y1="340" x2="970" y2="340" stroke="#888" stroke-width="1"/>
+  <line x1="940" y1="492" x2="970" y2="492" stroke="#888" stroke-width="1"/>
+  <line x1="960" y1="340" x2="960" y2="492" stroke="#888" stroke-width="1"/>
+  <text x="980" y="420" font-family="Arial, sans-serif" font-size="10" fill="#888">~2.5"</text>
+  
+  <!-- Ramp angle indicator -->
+  <line x1="670" y1="480" x2="630" y2="480" stroke="#666" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M650,480 A30,30 0 0,1 630,455" fill="none" stroke="#ffcc00" stroke-width="1.5"/>
+  <text x="610" y="465" font-family="Arial, sans-serif" font-size="9" fill="#ffcc00">~22°</text>
+  
+  <!-- Labels -->
+  <text x="750" y="295" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#87CEEB">4" POLYCARBONATE TUBE</text>
+  <text x="750" y="510" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#ff6b35">BASE COLLAR WITH RAMP-SLOTS</text>
+  
+  <!-- ==================== SIDE VIEW - FULL ASSEMBLY ==================== -->
+  <text x="500" y="570" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3498db">SIDE VIEW - COMPLETE ASSEMBLY</text>
+  
+  <!-- Base collar -->
+  <rect x="280" y="900" width="440" height="60" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="2" rx="5"/>
+  
+  <!-- Slots visible -->
+  <rect x="275" y="910" width="15" height="35" fill="#1a1a2e"/>
+  <rect x="710" y="910" width="15" height="35" fill="#1a1a2e"/>
+  
+  <!-- Ramps inside (cross section indication) -->
+  <path d="M290,920 L330,960 L330,950 L290,910 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1"/>
+  <path d="M710,920 L670,960 L670,950 L710,910 Z" fill="url(#rampSurface)" stroke="#aa4411" stroke-width="1"/>
+  
+  <!-- Tube -->
+  <rect x="330" y="610" width="10" height="300" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  <rect x="660" y="610" width="10" height="300" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  
+  <!-- Torch entry - THROUGH TUBE WALL, above the collar -->
+  <rect x="670" y="850" width="45" height="10" fill="url(#brassGrad)" stroke="#8B6914" stroke-width="1"/>
+  <circle cx="720" cy="855" r="10" fill="url(#brassGrad)" stroke="#8B6914" stroke-width="1"/>
+  <text x="740" y="850" font-family="Arial, sans-serif" font-size="9" fill="#daa520">1/4" NPT</text>
+  <text x="740" y="862" font-family="Arial, sans-serif" font-size="9" fill="#daa520">TORCH</text>
+  <text x="740" y="874" font-family="Arial, sans-serif" font-size="8" fill="#666">(above intake slots)</text>
+  
+  <!-- Fire vortex -->
+  <ellipse cx="500" cy="780" rx="40" ry="120" fill="url(#flameGrad)" opacity="0.8"/>
+  <path d="M480,750 Q450,700 470,650 Q500,600 540,660 Q570,720 520,760" 
+        stroke="#ffcc00" stroke-width="2" fill="none" stroke-dasharray="8,4" opacity="0.6"/>
+  
+  <!-- Hot air exhaust -->
+  <path d="M500,610 L500,580" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#hotArrow)"/>
+  <text x="520" y="590" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c">HOT AIR UP</text>
+  
+  <!-- Air intake -->
+  <path d="M240,930 L275,930" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M760,930 L725,930" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="220" y="925" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#3498db">COOL</text>
+  <text x="220" y="938" font-family="Arial, sans-serif" font-size="10" text-anchor="end" fill="#3498db">AIR IN</text>
+  
+  <!-- Dimensions -->
+  <line x1="680" y1="610" x2="740" y2="610" stroke="#888" stroke-width="1"/>
+  <line x1="680" y1="910" x2="740" y2="910" stroke="#888" stroke-width="1"/>
+  <line x1="730" y1="610" x2="730" y2="910" stroke="#888" stroke-width="1"/>
+  <text x="750" y="760" font-family="Arial, sans-serif" font-size="10" fill="#888">~24"</text>
+  
+  <!-- ==================== SPECIFICATIONS ==================== -->
+  <rect x="50" y="990" width="900" height="95" fill="#2c3e50" stroke="#444" stroke-width="2" rx="5"/>
+  <text x="500" y="1015" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="#f39c12">SPECIFICATIONS - V3 BASE COLLAR</text>
+  
+  <text x="70" y="1040" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Inner Diameter: 4" (tube sits inside)</text>
+  <text x="70" y="1060" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Outer Diameter: ~6"</text>
+  <text x="70" y="1080" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Height: ~2.5"</text>
+  
+  <text x="300" y="1040" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Ramp Slots: 6 @ 60° spacing</text>
+  <text x="300" y="1060" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Ramp Angle: ~22° from radial</text>
+  <text x="300" y="1080" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Slot Size: ~0.5"W × 1.5"H</text>
+  
+  <text x="550" y="1040" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Material: PETG or ABS</text>
+  <text x="550" y="1060" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Print Orientation: Open side up</text>
+  <text x="550" y="1080" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Torch Entry: Through tube wall, above collar</text>
+  
+  <!-- ==================== USER PROMPT ==================== -->
+  <rect x="50" y="1100" width="900" height="85" fill="#1e2a38" stroke="#3498db" stroke-width="1" rx="5"/>
+  <text x="70" y="1125" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#3498db">DESIGN PROMPT:</text>
+  <text x="70" y="1150" font-family="Arial, sans-serif" font-size="10" fill="#888">"Think hard, and try to think about the airflow involved in that first vortex base. Then try to merge those concepts with what</text>
+  <text x="70" y="1168" font-family="Arial, sans-serif" font-size="10" fill="#888">you've been working on with the intake cap design, which is on the right track but isn't generating structures that I think will actually work."</text>
+  <text x="70" y="1185" font-family="Arial, sans-serif" font-size="9" fill="#555">— User request, Dec 23 2025</text>
+</svg>

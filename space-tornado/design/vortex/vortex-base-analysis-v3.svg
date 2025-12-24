@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1400" width="1000" height="1400">
+  <defs>
+    <!-- Air flow arrows -->
+    <marker id="airArrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L0,10 L10,5 z" fill="#3498db"/>
+    </marker>
+    <marker id="airArrowSmall" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#3498db"/>
+    </marker>
+    <marker id="hotArrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L0,10 L10,5 z" fill="#e74c3c"/>
+    </marker>
+    <!-- Transparent printed material -->
+    <linearGradient id="printMaterialTrans" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c42;stop-opacity:0.7"/>
+      <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:0.8"/>
+      <stop offset="100%" style="stop-color:#e55a2b;stop-opacity:0.7"/>
+    </linearGradient>
+    <!-- Ramp material -->
+    <linearGradient id="rampMaterial" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff9f59;stop-opacity:0.9"/>
+      <stop offset="100%" style="stop-color:#cc5522;stop-opacity:0.9"/>
+    </linearGradient>
+    <!-- Floor/base material -->
+    <linearGradient id="floorMaterial" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#444;stop-opacity:0.5"/>
+      <stop offset="100%" style="stop-color:#222;stop-opacity:0.7"/>
+    </linearGradient>
+    <!-- Polycarbonate tube -->
+    <linearGradient id="polycarb" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:0.3"/>
+      <stop offset="50%" style="stop-color:#e8f4f8;stop-opacity:0.4"/>
+      <stop offset="100%" style="stop-color:#a8d8ea;stop-opacity:0.3"/>
+    </linearGradient>
+    <!-- Flame gradient -->
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b35;stop-opacity:0.8"/>
+      <stop offset="50%" style="stop-color:#f7931e;stop-opacity:0.7"/>
+      <stop offset="100%" style="stop-color:#ffcc00;stop-opacity:0.5"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1000" height="1400" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="500" y="40" font-family="Arial, sans-serif" font-size="26" font-weight="bold" text-anchor="middle" fill="#f39c12">VORTEX BASE ANALYSIS - V3</text>
+  <text x="500" y="70" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#888">Passive Convection-Driven Design with Angled Ramp Slots</text>
+  <text x="500" y="90" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#666">(Based on analysis of vortex_base.png - transparent rendering)</text>
+  
+  <!-- ==================== TOP VIEW - WHAT I THINK IS IN THE BASE ==================== -->
+  <text x="300" y="130" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3498db">TOP VIEW - BASE INTERIOR</text>
+  
+  <!-- Outer ring (base perimeter) -->
+  <circle cx="300" cy="340" r="150" fill="none" stroke="url(#printMaterialTrans)" stroke-width="12" opacity="0.8"/>
+  
+  <!-- Inner chamber floor (where fire sits) -->
+  <circle cx="300" cy="340" r="60" fill="url(#floorMaterial)" stroke="#555" stroke-width="2"/>
+  
+  <!-- THE KEY FEATURE: Angled ramp-slots -->
+  <!-- These are curved/angled channels that force air to enter tangentially -->
+  <!-- Ramp 1 - positioned at ~15° -->
+  <path d="M448,310 
+           Q420,300 390,295 
+           L380,320 
+           Q410,325 435,335 
+           Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Ramp 2 - positioned at ~75° -->
+  <path d="M395,200 
+           Q375,230 365,260 
+           L390,268 
+           Q398,240 415,215 
+           Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Ramp 3 - positioned at ~135° -->
+  <path d="M255,195 
+           Q275,225 280,260 
+           L255,268 
+           Q250,235 235,210 
+           Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Ramp 4 - positioned at ~195° -->
+  <path d="M155,310 
+           Q185,300 215,295 
+           L225,320 
+           Q195,325 170,335 
+           Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Ramp 5 - positioned at ~255° -->
+  <path d="M165,430 
+           Q190,410 220,395 
+           L230,418 
+           Q200,430 180,450 
+           Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Ramp 6 - positioned at ~315° -->
+  <path d="M350,475 
+           Q330,445 320,415 
+           L345,405 
+           Q353,435 370,460 
+           Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1.5"/>
+  
+  <!-- Air gaps between ramps (where air enters) -->
+  <text x="475" y="275" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR SLOT</text>
+  <path d="M455,280 L425,295" stroke="#3498db" stroke-width="1"/>
+  
+  <!-- Air flow arrows showing tangential entry -->
+  <!-- Air enters the slot, hits the angled ramp, deflects tangentially -->
+  <path d="M470,340 Q440,335 410,330" stroke="#3498db" stroke-width="2.5" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M410,330 Q380,340 350,360" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrowSmall)" stroke-dasharray="5,3"/>
+  
+  <path d="M415,180 Q395,210 380,250" stroke="#3498db" stroke-width="2.5" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M380,250 Q365,285 340,310" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrowSmall)" stroke-dasharray="5,3"/>
+  
+  <path d="M185,180 Q215,210 235,250" stroke="#3498db" stroke-width="2.5" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M235,250 Q255,285 280,310" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrowSmall)" stroke-dasharray="5,3"/>
+  
+  <path d="M130,340 Q160,335 195,330" stroke="#3498db" stroke-width="2.5" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M195,330 Q230,340 260,360" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrowSmall)" stroke-dasharray="5,3"/>
+  
+  <!-- Vortex rotation in center -->
+  <path d="M270,310 A40,40 0 1,1 330,310" stroke="#f39c12" stroke-width="3" fill="none"/>
+  <path d="M328,313 L335,305 L332,318 Z" fill="#f39c12"/>
+  <text x="300" y="350" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#f39c12">VORTEX</text>
+  <text x="300" y="365" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#f39c12">ROTATION</text>
+  
+  <!-- Fire position indicator -->
+  <circle cx="300" cy="340" r="20" fill="url(#flameGrad)" opacity="0.6"/>
+  <text x="300" y="395" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#e74c3c">FIRE SOURCE</text>
+  
+  <!-- Key explanation -->
+  <rect x="480" y="200" width="180" height="100" fill="#2c3e50" stroke="#444" stroke-width="1" rx="5" opacity="0.9"/>
+  <text x="570" y="220" font-family="Arial, sans-serif" font-size="11" font-weight="bold" text-anchor="middle" fill="#f39c12">HOW IT WORKS:</text>
+  <text x="490" y="240" font-family="Arial, sans-serif" font-size="9" fill="#ccc">1. Air enters through slots</text>
+  <text x="490" y="255" font-family="Arial, sans-serif" font-size="9" fill="#ccc">2. Hits angled ramp surface</text>
+  <text x="490" y="270" font-family="Arial, sans-serif" font-size="9" fill="#ccc">3. Deflects tangentially</text>
+  <text x="490" y="285" font-family="Arial, sans-serif" font-size="9" fill="#ccc">4. Creates clockwise spin</text>
+  
+  <!-- ==================== CROSS SECTION - RAMP DETAIL ==================== -->
+  <text x="750" y="130" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3498db">RAMP CROSS-SECTION</text>
+  
+  <!-- Base floor -->
+  <rect x="600" y="420" width="300" height="15" fill="url(#floorMaterial)" stroke="#555" stroke-width="1"/>
+  
+  <!-- Left wall -->
+  <rect x="600" y="250" width="15" height="170" fill="url(#printMaterialTrans)" stroke="#cc4a1a" stroke-width="1"/>
+  
+  <!-- Right wall -->
+  <rect x="885" y="250" width="15" height="170" fill="url(#printMaterialTrans)" stroke="#cc4a1a" stroke-width="1"/>
+  
+  <!-- THE RAMP - angled floor that redirects air -->
+  <path d="M615,380 L750,420 L750,435 L615,395 Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="2"/>
+  <text x="682" y="415" font-family="Arial, sans-serif" font-size="10" fill="#ffcc00">RAMP</text>
+  
+  <!-- Air flow over ramp -->
+  <path d="M580,330 L630,350" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="560" y="325" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR IN</text>
+  
+  <!-- Air deflected by ramp (into page = tangential) -->
+  <circle cx="700" cy="370" r="15" fill="none" stroke="#3498db" stroke-width="2"/>
+  <circle cx="700" cy="370" r="3" fill="#3498db"/>
+  <text x="720" y="365" font-family="Arial, sans-serif" font-size="9" fill="#3498db">DEFLECTED</text>
+  <text x="720" y="378" font-family="Arial, sans-serif" font-size="9" fill="#3498db">(INTO PAGE)</text>
+  
+  <!-- Angle indicator -->
+  <line x1="615" y1="420" x2="680" y2="420" stroke="#666" stroke-width="1" stroke-dasharray="3,2"/>
+  <path d="M640,420 A25,25 0 0,0 632,405" fill="none" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="655" y="413" font-family="Arial, sans-serif" font-size="10" fill="#f39c12">~15-25°</text>
+  
+  <!-- Fire zone -->
+  <ellipse cx="820" cy="380" rx="25" ry="45" fill="url(#flameGrad)" opacity="0.7"/>
+  <text x="820" y="445" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#e74c3c">FIRE</text>
+  
+  <!-- Hot air rising -->
+  <path d="M820,340 L820,280" stroke="#e74c3c" stroke-width="2" fill="none" marker-end="url(#hotArrow)"/>
+  <text x="845" y="290" font-family="Arial, sans-serif" font-size="9" fill="#e74c3c">HOT AIR</text>
+  <text x="845" y="302" font-family="Arial, sans-serif" font-size="9" fill="#e74c3c">RISES</text>
+  
+  <!-- Low pressure zone -->
+  <text x="820" y="355" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#aaa">LOW</text>
+  <text x="820" y="365" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#aaa">PRESSURE</text>
+  
+  <!-- ==================== SIDE VIEW - FULL ASSEMBLY ==================== -->
+  <text x="500" y="520" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="#3498db">SIDE VIEW - COMPLETE ASSEMBLY</text>
+  
+  <!-- Polycarbonate tube -->
+  <rect x="350" y="560" width="12" height="280" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  <rect x="638" y="560" width="12" height="280" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  
+  <!-- Base with ramp-slots -->
+  <rect x="300" y="820" width="400" height="50" fill="url(#printMaterialTrans)" stroke="#cc4a1a" stroke-width="2" rx="5"/>
+  
+  <!-- Ramps visible in cross section -->
+  <path d="M320,820 L350,840 L350,850 L320,830 Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1"/>
+  <path d="M650,840 L680,820 L680,830 L650,850 Z" fill="url(#rampMaterial)" stroke="#aa4411" stroke-width="1"/>
+  
+  <!-- Air slots -->
+  <rect x="295" y="825" width="15" height="30" fill="#1a1a2e"/>
+  <rect x="690" y="825" width="15" height="30" fill="#1a1a2e"/>
+  
+  <!-- Air flow into base -->
+  <path d="M260,840 L295,840" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M740,840 L705,840" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="240" y="820" font-family="Arial, sans-serif" font-size="10" fill="#3498db">COOL</text>
+  <text x="240" y="832" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR IN</text>
+  
+  <!-- Fire in center -->
+  <ellipse cx="500" cy="750" rx="30" ry="90" fill="url(#flameGrad)" opacity="0.8"/>
+  
+  <!-- Fire vortex spiral -->
+  <path d="M485,730 Q460,700 475,660 Q500,620 530,650 Q550,700 515,730" 
+        stroke="#ffcc00" stroke-width="2" fill="none" stroke-dasharray="6,3" opacity="0.7"/>
+  
+  <!-- Hot air exhaust -->
+  <path d="M500,580 L500,540" stroke="#e74c3c" stroke-width="3" fill="none" marker-end="url(#hotArrow)"/>
+  <text x="520" y="545" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c">HOT AIR</text>
+  <text x="520" y="557" font-family="Arial, sans-serif" font-size="10" fill="#e74c3c">EXHAUST</text>
+  
+  <!-- Cap at top -->
+  <rect x="340" y="550" width="320" height="15" fill="url(#printMaterialTrans)" stroke="#cc4a1a" stroke-width="2" rx="3"/>
+  
+  <!-- Torch entry through cap -->
+  <rect x="493" y="520" width="14" height="35" fill="#daa520" stroke="#8B6914" stroke-width="1"/>
+  <circle cx="500" cy="520" r="10" fill="#daa520" stroke="#8B6914" stroke-width="1"/>
+  <text x="530" y="530" font-family="Arial, sans-serif" font-size="9" fill="#daa520">TORCH</text>
+  
+  <!-- Dimension - tube height -->
+  <line x1="670" y1="560" x2="720" y2="560" stroke="#888" stroke-width="1"/>
+  <line x1="670" y1="840" x2="720" y2="840" stroke="#888" stroke-width="1"/>
+  <line x1="700" y1="560" x2="700" y2="840" stroke="#888" stroke-width="1"/>
+  <text x="730" y="700" font-family="Arial, sans-serif" font-size="10" fill="#888">~24"</text>
+  
+  <!-- Dimension - base height -->
+  <line x1="720" y1="820" x2="760" y2="820" stroke="#888" stroke-width="1"/>
+  <line x1="720" y1="870" x2="760" y2="870" stroke="#888" stroke-width="1"/>
+  <line x1="750" y1="820" x2="750" y2="870" stroke="#888" stroke-width="1"/>
+  <text x="770" y="850" font-family="Arial, sans-serif" font-size="10" fill="#888">~2-3"</text>
+  
+  <!-- Labels -->
+  <text x="500" y="580" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#87CEEB">CAP (with torch hole)</text>
+  <text x="500" y="890" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#ff6b35">BASE WITH ANGLED RAMP-SLOTS</text>
+  <text x="395" y="700" font-family="Arial, sans-serif" font-size="9" text-anchor="end" fill="#87CEEB">4" TUBE</text>
+  
+  <!-- ==================== PHYSICS EXPLANATION ==================== -->
+  <rect x="50" y="940" width="900" height="200" fill="#2c3e50" stroke="#444" stroke-width="2" rx="5"/>
+  <text x="500" y="970" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#f39c12">PASSIVE VORTEX PHYSICS</text>
+  
+  <text x="70" y="1005" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">DRIVING FORCE (Convection):</text>
+  <text x="70" y="1025" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Fire heats air → hot air rises (less dense) → creates LOW PRESSURE at base → cool air rushes in to fill void</text>
+  
+  <text x="70" y="1055" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">VORTEX FORMATION (Angular Momentum):</text>
+  <text x="70" y="1075" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Angled ramps force incoming air to enter TANGENTIALLY (not radially) → air has angular momentum</text>
+  <text x="70" y="1095" font-family="Arial, sans-serif" font-size="11" fill="#ccc">As air is drawn toward center (low pressure), radius decreases → spin speed INCREASES (like ice skater pulling in arms)</text>
+  
+  <text x="70" y="1125" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">CRITICAL DESIGN REQUIREMENT:</text>
+  <text x="70" y="1145" font-family="Arial, sans-serif" font-size="11" fill="#ccc">Ramps must be angled 15-30° from radial. Too shallow = weak spin. Too steep = blocks airflow.</text>
+  
+  <!-- ==================== USER PROMPT ==================== -->
+  <rect x="50" y="1160" width="900" height="120" fill="#1e2a38" stroke="#3498db" stroke-width="1" rx="5"/>
+  <text x="70" y="1185" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#3498db">DESIGN PROMPT:</text>
+  <text x="70" y="1210" font-family="Arial, sans-serif" font-size="10" fill="#888">"Maybe a better starting point is for you to vectorize what you _think_ is happening inside vortex_base.png.</text>
+  <text x="70" y="1230" font-family="Arial, sans-serif" font-size="10" fill="#888">I bet there are ramps and stuff in there that let the air come out at an angle. Try to make a vector render of this base but, transparent.</text>
+  <text x="70" y="1250" font-family="Arial, sans-serif" font-size="10" fill="#888">Think hard, and try to think about the airflow involved in that first vortex base."</text>
+  <text x="70" y="1270" font-family="Arial, sans-serif" font-size="9" fill="#555">— User request, Dec 23 2025</text>
+</svg>

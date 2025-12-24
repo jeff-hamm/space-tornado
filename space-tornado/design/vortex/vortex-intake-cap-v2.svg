@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" width="900" height="1100">
+  <defs>
+    <!-- Air flow arrows -->
+    <marker id="airArrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L8,4 z" fill="#3498db"/>
+    </marker>
+    <marker id="flameArrow" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L8,4 z" fill="#e74c3c"/>
+    </marker>
+    <!-- Polycarbonate gradient -->
+    <linearGradient id="polycarb" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#a8d8ea;stop-opacity:0.4"/>
+      <stop offset="50%" style="stop-color:#e8f4f8;stop-opacity:0.6"/>
+      <stop offset="100%" style="stop-color:#a8d8ea;stop-opacity:0.4"/>
+    </linearGradient>
+    <!-- 3D print material -->
+    <linearGradient id="printMaterial" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff8c42"/>
+      <stop offset="50%" style="stop-color:#ff6b35"/>
+      <stop offset="100%" style="stop-color:#e55a2b"/>
+    </linearGradient>
+    <!-- Flame gradient -->
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff6b35"/>
+      <stop offset="50%" style="stop-color:#f7931e"/>
+      <stop offset="100%" style="stop-color:#ffcc00"/>
+    </linearGradient>
+    <!-- Brass gradient -->
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#b8860b"/>
+      <stop offset="50%" style="stop-color:#daa520"/>
+      <stop offset="100%" style="stop-color:#b8860b"/>
+    </linearGradient>
+    <!-- Vane material -->
+    <linearGradient id="vaneMaterial" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9f59"/>
+      <stop offset="100%" style="stop-color:#cc5522"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="1100" fill="#1a1a2e"/>
+  
+  <!-- Title -->
+  <text x="450" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#f39c12">VORTEX INTAKE CAP - V2</text>
+  <text x="450" y="65" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#888">Angled Vane Design with Torch-Through-Cap</text>
+  
+  <!-- ==================== TOP VIEW ==================== -->
+  <text x="225" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#3498db">TOP VIEW</text>
+  
+  <!-- Outer ring of cap -->
+  <circle cx="225" cy="290" r="100" fill="none" stroke="url(#printMaterial)" stroke-width="8"/>
+  
+  <!-- Middle ring (where vanes attach) -->
+  <circle cx="225" cy="290" r="70" fill="none" stroke="#cc5522" stroke-width="3" stroke-dasharray="2,2"/>
+  
+  <!-- Inner opening (vortex chamber) -->
+  <circle cx="225" cy="290" r="55" fill="#2c3e50" stroke="#444" stroke-width="2"/>
+  
+  <!-- TORCH HOLE - centered in cap! -->
+  <circle cx="225" cy="290" r="12" fill="#1a1a2e" stroke="url(#brassGrad)" stroke-width="3"/>
+  <circle cx="225" cy="290" r="8" fill="#333" stroke="#8B6914" stroke-width="1"/>
+  <text x="225" y="260" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#daa520">1/4" NPT</text>
+  <text x="225" y="320" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#daa520">TORCH HOLE</text>
+  
+  <!-- ANGLED VANES (8 vanes at 45° angle for spiral airflow) -->
+  <!-- Vane 1 - 0° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(0, 225, 290)"/>
+  <!-- Vane 2 - 45° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(45, 225, 290)"/>
+  <!-- Vane 3 - 90° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(90, 225, 290)"/>
+  <!-- Vane 4 - 135° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(135, 225, 290)"/>
+  <!-- Vane 5 - 180° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(180, 225, 290)"/>
+  <!-- Vane 6 - 225° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(225, 225, 290)"/>
+  <!-- Vane 7 - 270° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(270, 225, 290)"/>
+  <!-- Vane 8 - 315° position -->
+  <path d="M325,290 L295,275 L295,265 L325,280 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1" transform="rotate(315, 225, 290)"/>
+  
+  <!-- Air gaps between vanes (showing where air enters) -->
+  <text x="355" y="260" font-family="Arial, sans-serif" font-size="9" fill="#3498db">AIR GAP</text>
+  <path d="M340,265 L320,275" stroke="#3498db" stroke-width="1"/>
+  
+  <!-- Spiral airflow arrows showing tangential entry -->
+  <path d="M350,250 Q320,260 300,275" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M280,160 Q260,190 255,230" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M100,330 Q130,320 160,305" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M170,420 Q190,400 210,370" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  
+  <!-- Vortex rotation indicator inside -->
+  <path d="M200,265 A30,30 0 1,1 250,265" stroke="#f39c12" stroke-width="2" fill="none" stroke-dasharray="5,3"/>
+  <path d="M248,268 L255,260 L252,272 Z" fill="#f39c12"/>
+  <text x="225" y="345" font-family="Arial, sans-serif" font-size="9" text-anchor="middle" fill="#f39c12">CLOCKWISE VORTEX</text>
+  
+  <!-- Dimension - outer diameter -->
+  <line x1="125" y1="290" x2="125" y2="150" stroke="#888" stroke-width="1"/>
+  <line x1="325" y1="290" x2="325" y2="150" stroke="#888" stroke-width="1"/>
+  <line x1="125" y1="160" x2="325" y2="160" stroke="#888" stroke-width="1"/>
+  <text x="225" y="150" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#888">~6" OD</text>
+  
+  <!-- Dimension - inner diameter (fits 4" tube) -->
+  <line x1="170" y1="290" x2="170" y2="430" stroke="#666" stroke-width="1"/>
+  <line x1="280" y1="290" x2="280" y2="430" stroke="#666" stroke-width="1"/>
+  <line x1="170" y1="420" x2="280" y2="420" stroke="#666" stroke-width="1"/>
+  <text x="225" y="440" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#666">4" ID (tube fit)</text>
+  
+  <!-- Vane angle callout -->
+  <text x="360" y="300" font-family="Arial, sans-serif" font-size="9" fill="#ff9f59">8 VANES</text>
+  <text x="360" y="315" font-family="Arial, sans-serif" font-size="9" fill="#ff9f59">@ 30° ANGLE</text>
+  
+  <!-- ==================== SIDE VIEW (Cross Section) ==================== -->
+  <text x="675" y="110" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="#3498db">SIDE VIEW (SECTION)</text>
+  
+  <!-- Polycarbonate tube -->
+  <rect x="590" y="220" width="10" height="220" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  <rect x="750" y="220" width="10" height="220" fill="url(#polycarb)" stroke="#87CEEB" stroke-width="2"/>
+  <text x="675" y="460" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#87CEEB">4" POLYCARBONATE TUBE</text>
+  
+  <!-- THICKER Vortex cap (cross section) - now 2.5" tall -->
+  <!-- Top plate with torch hole -->
+  <rect x="565" y="140" width="220" height="12" rx="3" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  <!-- Torch hole through top -->
+  <rect x="665" y="135" width="20" height="20" fill="#1a1a2e"/>
+  <rect x="668" y="138" width="14" height="14" fill="#333" stroke="url(#brassGrad)" stroke-width="2"/>
+  
+  <!-- Left side wall with vane -->
+  <rect x="565" y="150" width="35" height="70" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  <!-- Angled vane on left (shown as diagonal) -->
+  <path d="M600,155 L580,185 L575,185 L595,155 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1"/>
+  <path d="M600,175 L580,205 L575,205 L595,175 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1"/>
+  
+  <!-- Right side wall with vane -->
+  <rect x="750" y="150" width="35" height="70" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  <!-- Angled vane on right (shown as diagonal) -->
+  <path d="M755,155 L775,185 L780,185 L760,155 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1"/>
+  <path d="M755,175 L775,205 L780,205 L760,175 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="1"/>
+  
+  <!-- Bottom lip that fits over tube -->
+  <rect x="580" y="210" width="20" height="25" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  <rect x="750" y="210" width="20" height="25" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  
+  <!-- Air flow through angled vanes -->
+  <path d="M530,170 Q560,180 575,195" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <text x="510" y="165" font-family="Arial, sans-serif" font-size="9" fill="#3498db">AIR IN</text>
+  <text x="510" y="177" font-family="Arial, sans-serif" font-size="8" fill="#3498db">(deflected by vanes)</text>
+  
+  <path d="M820,170 Q790,180 780,195" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <text x="805" y="165" font-family="Arial, sans-serif" font-size="9" fill="#3498db">AIR IN</text>
+  
+  <!-- Spiral air motion inside (cross-section shows circular motion) -->
+  <ellipse cx="675" cy="280" rx="50" ry="15" fill="none" stroke="#3498db" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="740" y="285" font-family="Arial, sans-serif" font-size="8" fill="#3498db">SPIRAL</text>
+  
+  <!-- Flame from torch (now coming from TOP) -->
+  <ellipse cx="675" cy="320" rx="15" ry="60" fill="url(#flameGrad)" opacity="0.8"/>
+  <ellipse cx="675" cy="300" rx="8" ry="35" fill="#ffcc00" opacity="0.6"/>
+  
+  <!-- Torch coming through cap from top -->
+  <rect x="668" y="100" width="14" height="45" fill="url(#brassGrad)" stroke="#8B6914" stroke-width="1"/>
+  <circle cx="675" cy="100" r="10" fill="url(#brassGrad)" stroke="#8B6914" stroke-width="1"/>
+  <text x="705" y="95" font-family="Arial, sans-serif" font-size="9" fill="#daa520">1/4" NPT TORCH</text>
+  <text x="705" y="107" font-family="Arial, sans-serif" font-size="9" fill="#daa520">(THROUGH CAP)</text>
+  
+  <!-- Dimension annotations -->
+  <line x1="560" y1="140" x2="560" y2="110" stroke="#888" stroke-width="1"/>
+  <line x1="790" y1="140" x2="790" y2="110" stroke="#888" stroke-width="1"/>
+  <line x1="560" y1="120" x2="790" y2="120" stroke="#888" stroke-width="1"/>
+  <text x="675" y="110" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#888">~6" total width</text>
+  
+  <line x1="800" y1="140" x2="840" y2="140" stroke="#888" stroke-width="1"/>
+  <line x1="800" y1="235" x2="840" y2="235" stroke="#888" stroke-width="1"/>
+  <line x1="830" y1="140" x2="830" y2="235" stroke="#888" stroke-width="1"/>
+  <text x="850" y="180" font-family="Arial, sans-serif" font-size="9" fill="#888">~2.5"</text>
+  <text x="850" y="192" font-family="Arial, sans-serif" font-size="9" fill="#888">cap</text>
+  <text x="850" y="204" font-family="Arial, sans-serif" font-size="9" fill="#888">height</text>
+  
+  <!-- Vane angle detail callout -->
+  <rect x="545" y="160" width="2" height="20" fill="#666"/>
+  <line x1="547" y1="165" x2="580" y2="190" stroke="#ff9f59" stroke-width="1" stroke-dasharray="3,2"/>
+  <text x="515" y="175" font-family="Arial, sans-serif" font-size="8" fill="#ff9f59">30°</text>
+  
+  <!-- ==================== SINGLE VANE DETAIL ==================== -->
+  <text x="225" y="500" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3498db">VANE DETAIL (TOP VIEW)</text>
+  
+  <!-- Zoomed vane showing angle -->
+  <rect x="100" y="530" width="250" height="120" fill="#2c3e50" stroke="#444" stroke-width="1" rx="3"/>
+  
+  <!-- Outer wall arc -->
+  <path d="M150,600 A80,80 0 0,1 300,600" fill="none" stroke="url(#printMaterial)" stroke-width="8"/>
+  
+  <!-- Single angled vane -->
+  <path d="M300,600 L250,560 L245,565 L290,600 Z" fill="url(#vaneMaterial)" stroke="#aa4411" stroke-width="2"/>
+  
+  <!-- Air flow direction -->
+  <path d="M320,580 Q290,575 265,565" stroke="#3498db" stroke-width="3" fill="none" marker-end="url(#airArrow)"/>
+  <text x="330" y="575" font-family="Arial, sans-serif" font-size="10" fill="#3498db">AIR</text>
+  
+  <!-- Deflected air (tangential) -->
+  <path d="M250,570 Q230,590 200,600" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)" stroke-dasharray="4,2"/>
+  <text x="180" y="620" font-family="Arial, sans-serif" font-size="9" fill="#3498db">DEFLECTED</text>
+  <text x="180" y="632" font-family="Arial, sans-serif" font-size="9" fill="#3498db">TANGENTIALLY</text>
+  
+  <!-- Angle indicator -->
+  <path d="M295,600 A20,20 0 0,0 285,585" fill="none" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="305" y="595" font-family="Arial, sans-serif" font-size="10" fill="#f39c12">30°</text>
+  
+  <!-- ==================== 3D ISOMETRIC VIEW ==================== -->
+  <text x="675" y="500" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#3498db">3D CONCEPT VIEW</text>
+  
+  <!-- Isometric cap body (thicker now) -->
+  <ellipse cx="675" cy="620" rx="90" ry="35" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="2"/>
+  <rect x="585" y="570" width="180" height="50" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="1"/>
+  <ellipse cx="675" cy="570" rx="90" ry="35" fill="url(#printMaterial)" stroke="#cc4a1a" stroke-width="2"/>
+  
+  <!-- Vanes visible on top (simplified) -->
+  <line x1="765" y1="570" x2="720" y2="545" stroke="#aa4411" stroke-width="3"/>
+  <line x1="675" y1="535" x2="675" y2="510" stroke="#aa4411" stroke-width="3"/>
+  <line x1="585" y1="570" x2="630" y2="545" stroke="#aa4411" stroke-width="3"/>
+  <line x1="735" y1="545" x2="700" y2="530" stroke="#aa4411" stroke-width="3"/>
+  <line x1="615" y1="545" x2="650" y2="530" stroke="#aa4411" stroke-width="3"/>
+  
+  <!-- Torch hole in center -->
+  <ellipse cx="675" cy="555" rx="12" ry="5" fill="#1a1a2e" stroke="url(#brassGrad)" stroke-width="2"/>
+  <text x="675" y="545" font-family="Arial, sans-serif" font-size="8" text-anchor="middle" fill="#daa520">TORCH</text>
+  
+  <!-- Inner lip -->
+  <ellipse cx="675" cy="645" rx="55" ry="22" fill="none" stroke="#ff6b35" stroke-width="3"/>
+  <text x="675" y="685" font-family="Arial, sans-serif" font-size="10" text-anchor="middle" fill="#ff6b35">Inner lip fits over 4" tube</text>
+  
+  <!-- Air flow arrows -->
+  <path d="M790,545 Q750,550 735,555" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <path d="M560,595 Q600,590 615,580" stroke="#3498db" stroke-width="2" fill="none" marker-end="url(#airArrow)"/>
+  <text x="795" y="540" font-family="Arial, sans-serif" font-size="9" fill="#3498db">AIR IN</text>
+  
+  <!-- ==================== SPECIFICATIONS ==================== -->
+  <rect x="50" y="720" width="800" height="220" fill="#2c3e50" stroke="#444" stroke-width="2" rx="5"/>
+  <text x="450" y="750" font-family="Arial, sans-serif" font-size="16" font-weight="bold" text-anchor="middle" fill="#f39c12">DESIGN SPECIFICATIONS - V2</text>
+  
+  <text x="80" y="790" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Material:</text>
+  <text x="220" y="790" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">PETG or ABS (heat resistant)</text>
+  
+  <text x="80" y="815" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Inner Diameter:</text>
+  <text x="220" y="815" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">4.0" (fits over polycarbonate tube)</text>
+  
+  <text x="80" y="840" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Outer Diameter:</text>
+  <text x="220" y="840" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">~6" (to accommodate vanes)</text>
+  
+  <text x="80" y="865" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Cap Height:</text>
+  <text x="220" y="865" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">~2.5" (thicker for vane depth)</text>
+  
+  <text x="80" y="890" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Number of Vanes:</text>
+  <text x="220" y="890" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">8 evenly spaced @ 45° intervals</text>
+  
+  <text x="80" y="915" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Vane Angle:</text>
+  <text x="220" y="915" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">30° from radial (tangential deflection)</text>
+  
+  <text x="480" y="790" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Torch Entry:</text>
+  <text x="620" y="790" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">1/4" NPT hole THROUGH CAP CENTER</text>
+  
+  <text x="480" y="815" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Function:</text>
+  <text x="620" y="815" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">Angled vanes create spiral airflow</text>
+  
+  <text x="480" y="840" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Print Orientation:</text>
+  <text x="620" y="840" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">Cap-side down (supports for vanes)</text>
+  
+  <text x="480" y="865" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Infill:</text>
+  <text x="620" y="865" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">20-30% (heat dissipation)</text>
+  
+  <text x="480" y="890" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Wall Thickness:</text>
+  <text x="620" y="890" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">3-4 perimeters minimum</text>
+  
+  <text x="480" y="915" font-family="Arial, sans-serif" font-size="12" fill="#ccc">Key Improvement:</text>
+  <text x="620" y="915" font-family="Arial, sans-serif" font-size="12" fill="#4fc3f7">Fan-blade vanes = true spiral airflow</text>
+  
+  <!-- ==================== USER PROMPT ==================== -->
+  <rect x="50" y="960" width="800" height="120" fill="#1e2a38" stroke="#3498db" stroke-width="1" rx="5"/>
+  <text x="70" y="985" font-family="Arial, sans-serif" font-size="11" font-weight="bold" fill="#3498db">DESIGN PROMPT:</text>
+  <text x="70" y="1010" font-family="Arial, sans-serif" font-size="10" fill="#888">"Lets put a hole in the 'cap' so that the torch enters through it.</text>
+  <text x="70" y="1030" font-family="Arial, sans-serif" font-size="10" fill="#888">Also, I don't see how air can enter in a spiral pattern with this design.</text>
+  <text x="70" y="1050" font-family="Arial, sans-serif" font-size="10" fill="#888">You can make the cap a little bit thicker, and maybe use fan blade angles to allow the air in in a spiral"</text>
+  <text x="70" y="1070" font-family="Arial, sans-serif" font-size="9" fill="#555">— User request, Dec 23 2025</text>
+</svg>
